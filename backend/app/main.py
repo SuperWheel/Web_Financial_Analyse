@@ -27,7 +27,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="Web_Financial_Analyse 财务分析系统",
     description="轻量级企业财务报表分析系统 API",
-    version="0.1.0",
+    version="1.0.0",
     lifespan=lifespan,
 )
 
