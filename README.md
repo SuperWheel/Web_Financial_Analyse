@@ -1,38 +1,80 @@
 # Web_Financial_Analyse
 
-轻量级**企业财务报表分析系统**：三大报表录入、公开年报 PDF/Excel 导入、财务比率分析、科目级多期对比。单机本地运行，无认证。
+轻量级**企业财务报表分析系统**：三大报表录入与存储、公开年报导入（PDF / Excel / 巨潮在线拉取）、财务比率分析、科目级多期对比。  
+单机本地运行，无认证，数据落在本机 SQLite。
 
-## 功能概览
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
+[![Vue](https://img.shields.io/badge/Vue-3-brightgreen)](https://vuejs.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688)](https://fastapi.tiangolo.com/)
+[![License](https://img.shields.io/badge/license-Local%20use-lightgrey)](#说明)
 
-- 企业档案与三大报表（资产负债表 / 利润表 / 现金流量表）CRUD
-- 年报 PDF 识别导入（CAS 主路径）+ 人审入库
-- Excel 模板导入 / 导出（导出含财务比率）
-- 巨潮资讯 A 股年报检索下载（代码或公司名称）
-- 财务比率分析（趋势图、较上期变动、角色视图）
-- 科目级多期对比看板（KPI、变动榜、可调坐标轴趋势图）
+---
+
+## 界面预览
+
+### 仪表盘 · 企业档案
+
+![仪表盘](docs/screenshots/01-dashboard.png)
+
+### 比率分析 · KPI / 较上期变动 / 健康摘要
+
+![比率分析](docs/screenshots/02-analysis.png)
+
+### 多期对比 · 科目趋势与变动榜
+
+![多期对比](docs/screenshots/03-compare.png)
+
+### 年报导入 · 巨潮在线拉取 / Excel / PDF
+
+![年报导入](docs/screenshots/04-import.png)
+
+### 三大报表 · 多期列表与录入
+
+![三大报表](docs/screenshots/05-statements.png)
+
+---
+
+## 功能一览
+
+| 模块 | 能力 |
+|------|------|
+| **企业与报表** | 企业档案；资产负债表 / 利润表 / 现金流量表 CRUD；年报 / 季报 |
+| **年报导入** | PDF 识别映射 + 人审入库（CAS 主路径）；Excel 模板导入；巨潮按**代码或公司名称**检索下载 |
+| **比率分析** | 13 项常用比率动态计算（不落库）；角色视图（管理层 / 投资人 / 专业）；较上期变动（对齐当前报告期前一年）；趋势图可调 Y 轴 |
+| **多期对比** | 科目矩阵；金额 + 环比 + 结构占比；KPI 卡片（万/亿缩写）；变动榜；双 Y 轴 / 对数 / 自定义坐标 / 走势指数 |
+| **导出** | Excel 工作簿：说明 + 三表 + **财务比率**；HTML 快照 / 打印 |
+
+---
 
 ## 技术栈
 
 | 层 | 选型 |
 |----|------|
-| 后端 | Python · FastAPI · SQLAlchemy · SQLite · pandas · openpyxl · pdfplumber |
-| 前端 | Vue3 · TypeScript · Element Plus · ECharts · Vite |
+| 后端 | Python · FastAPI · SQLAlchemy · SQLite · pandas · openpyxl · pdfplumber · httpx |
+| 前端 | Vue 3 · TypeScript · Element Plus · ECharts · Vite · Pinia |
+| 形态 | 单机本地 · 无登录 · `data/finance.db` |
+
+后端分层：`api → services → models`，`schemas` 边界校验，`core` 放常量与公式。
+
+---
 
 ## 快速开始
 
 ### 环境要求
 
-- Python **3.10+**（推荐 3.12；`Mapped[int \| None]` 等注解需 3.10+）
-- Node.js 18+（或 bun / pnpm）
+- **Python 3.10+**（推荐 3.12）
+- **Node.js 18+**（或 bun / pnpm）
 
 ### 一键启动 / 关闭（macOS）
 
-双击根目录：
+根目录双击：
 
-- `启动财务分析系统.command` → 启动后端 + 前端并打开页面  
-- `关闭财务分析系统.command` → 停止本项目服务  
+| 文件 | 作用 |
+|------|------|
+| `启动财务分析系统.command` | 启动后端 + 前端并打开页面 |
+| `关闭财务分析系统.command` | 停止本项目服务 |
 
-日志与 PID：`.runtime/`
+运行日志与 PID 在 `.runtime/`。
 
 ### 手动启动
 
@@ -40,7 +82,7 @@
 # 后端
 cd backend
 python3 -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt -r requirements-dev.txt
 uvicorn app.main:app --reload --host 127.0.0.1 --port 9000
 ```
@@ -48,58 +90,94 @@ uvicorn app.main:app --reload --host 127.0.0.1 --port 9000
 ```bash
 # 前端（另开终端）
 cd frontend
-npm install                 # 或 bun install / pnpm install
+npm install                        # 或: bun install / pnpm install
 npm run dev
 ```
 
 | 服务 | 地址 |
 |------|------|
 | 前端 | http://127.0.0.1:5173 |
-| 后端健康检查 | http://127.0.0.1:9000/api/health |
+| 健康检查 | http://127.0.0.1:9000/api/health |
 | API 文档 | http://127.0.0.1:9000/docs |
 
-> 默认后端端口 **9000**（避开部分系统保留端口）。修改见 `backend/app/config.py` 与 `frontend/vite.config.ts` 代理。
+> 默认后端端口 **9000**（避开部分系统保留端口段）。修改：`backend/app/config.py` 的 `BACKEND_PORT`，并同步 `frontend/vite.config.ts` 代理。
+
+---
+
+## 典型使用路径
+
+```
+1. 仪表盘创建企业
+      ↓
+2. 年报导入（巨潮拉取 / PDF / Excel）→ 人审入库
+   或 三大报表手工录入
+      ↓
+3. 比率分析：选企业 + 报告期，看 KPI / 较上期 / 趋势
+      ↓
+4. 多期对比：科目金额、环比、结构与趋势图
+      ↓
+5. 导出 Excel（含财务比率）或 HTML 快照
+```
+
+---
 
 ## 目录结构
 
 ```
 Web_Financial_Analyse/
-├── AGENTS.md / CLAUDE.md     # 项目导航
-├── openspec/                 # Spec 变更包
-├── docs/                     # api / architecture / dev-log
-├── backend/app/              # FastAPI：api → services → models
-├── frontend/src/             # Vue3 视图与 API 封装
-├── data/                     # SQLite 与导入文件（本地，默认不入库）
-├── scripts/                  # start/stop-dev
-└── 启动/关闭财务分析系统.command
+├── README.md
+├── AGENTS.md / CLAUDE.md      # 导航与协作约定
+├── openspec/                  # Spec 变更包（001–009）
+├── docs/
+│   ├── api.md
+│   ├── architecture.md
+│   ├── dev-log.md
+│   └── screenshots/           # README 截图
+├── backend/
+│   └── app/{api,services,models,schemas,core}
+├── frontend/
+│   └── src/{views,api,stores,utils,constants}
+├── data/                      # 本地 SQLite / 导入文件（默认不入库）
+├── scripts/                   # start-dev / stop-dev
+└── 启动|关闭财务分析系统.command
 ```
+
+---
 
 ## 测试
 
 ```bash
-cd backend
-source .venv/bin/activate
+# 后端
+cd backend && source .venv/bin/activate
 pytest -q
+
+# 前端
+cd frontend
+npm run type-check    # 或 bun run type-check
 ```
 
-```bash
-cd frontend
-npm run type-check
-# 或 bun run type-check
-```
+---
 
 ## 开发约定
 
-- 分层：`api → services → models`，`schemas` 校验，`core` 横切
-- 模式：小改 Vibe / 功能 Plan / 模块 Spec（见《AI Coding 开发规范参考文档》）
+- 分层：`api → services → models`，禁止越层
+- 模式：小改 Vibe / 功能 Plan / 模块 Spec（见根目录《AI Coding 开发规范参考文档》）
 - 改动后追加 `docs/dev-log.md`
 
-## 说明
+更多入口见 [`AGENTS.md`](./AGENTS.md)、[`docs/api.md`](./docs/api.md)、[`openspec/project.md`](./openspec/project.md)。
 
-- 本地 SQLite，**无多用户认证**
-- 年报 PDF 样例目录 `年报参考/` 中的 PDF **默认不纳入 Git**（体积大）；可自行放入后通过「年报导入」使用
-- 巨潮拉取请控制频率，遵守网站使用条款；仅支持 A 股主路径
+---
+
+## 说明与边界
+
+- **本地单机**，无多用户与权限
+- 比率与多期对比结果**不落库**，按公式/矩阵动态计算
+- 年报 PDF 样例目录 `年报参考/` 中的 PDF **默认不纳入 Git**（体积大）
+- 巨潮在线拉取请控制频率，遵守网站使用条款；当前主路径为 **A 股 CAS**
+- 港股 / EDGAR、批量任务等为后续增强项
+
+---
 
 ## License
 
-本项目默认以私有/本地使用为目的提供；若需开源协议可自行补充 `LICENSE`。
+默认以本地/私有使用为目的提供。若需开源协议，可自行补充 `LICENSE` 文件。
