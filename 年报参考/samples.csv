@@ -1,0 +1,16 @@
+code,name,industry_group,market,standard,year_target,role,subdir,filename,status,notes
+603486,科沃斯,G1-制造-机器人,SH,CAS,2025,v2-primary,ashare-cas,603486_科沃斯_2025年报.pdf,downloaded,合并三表可定位；可用
+688775,影石创新,G1-制造-消费电子,SH,CAS,2025,v2-primary,ashare-cas,688775_影石创新_2025年报.pdf,downloaded,合并三表可定位；可用
+000651,格力电器,G1-制造-家电,SZ,CAS,2025,v2-primary,ashare-cas,000651_格力电器_2025年报.pdf,downloaded,CAS_OK；合并三表+企业会计准则
+600519,贵州茅台,G2-白酒消费,SH,CAS,2025,v2-primary,ashare-cas,600519_贵州茅台_2025年报.pdf,downloaded,合并三表可定位；可用
+300760,迈瑞医疗,G3-医药器械,SZ,CAS,2025,v2-primary,ashare-cas,300760_迈瑞医疗_2025年报.pdf,downloaded,合并三表可定位；可用
+688111,金山办公,G4-软件,SH,CAS,2025,v2-primary,ashare-cas,688111_金山办公_2025年报.pdf,downloaded,合并三表可定位；可用
+002555,三七互娱,G4-游戏互联网,SZ,CAS,2025,v2-primary,ashare-cas,002555_三七互娱_2025年报.pdf,downloaded,合并三表可定位；可用
+600048,保利发展,G5-地产,SH,CAS,2025,v2-primary,ashare-cas,600048_保利发展_2025年报.pdf,downloaded,合并三表可定位；可用
+601933,永辉超市,G6-零售,SH,CAS,2025,v2-primary,ashare-cas,601933_永辉超市_2025年报.pdf,downloaded,CAS_OK；合并三表+企业会计准则
+600309,万华化学,G7-化工周期,SH,CAS,2025,v2-primary,ashare-cas,600309_万华化学_2025年报.pdf,downloaded,合并三表可定位；可用
+000333,美的集团,cross-gaap-ifrs,SZ+HK,IFRS,2025,alias-only,cross-gaap,000333_美的集团_2025年报_IFRS港式.pdf,downloaded,IFRS港式；不进v2主集
+002352,顺丰控股,cross-gaap-ifrs,SZ+HK,IFRS,2025,alias-only,cross-gaap,002352_顺丰控股_2025年报_IFRS港式.pdf,downloaded,IFRS港式；不进v2主集
+,哔哩哔哩,cross-gaap,HK,US-GAAP,2025,alias-only,cross-gaap,哔哩哔哩_2025年报.pdf,downloaded,不驱动CAS加列
+,小米集团,hard-case,HK,mixed,2025,degrade-only,hard-cases,小米集团_2025年报.pdf,downloaded,CID难解析
+600036,招商银行,optional-financial,SH,CAS-bank,2025,exclude-from-v2,optional-financial,600036_招商银行_2025年报.pdf,optional,金融对照；默认不统计

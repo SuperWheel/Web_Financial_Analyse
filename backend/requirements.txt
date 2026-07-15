@@ -1,0 +1,28 @@
+# Web 框架
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+
+# ORM / 数据库
+sqlalchemy==2.0.30
+
+# 数据校验（随 FastAPI，显式锁定版本）
+pydantic==2.7.1
+
+# 财务数据计算（多期对比、比率）
+pandas==2.2.2
+
+# Excel 导入/导出（后续 Phase 4 使用，提前引入）
+openpyxl==3.1.2
+
+# 表单/文件上传（后续 Excel 导入用）
+python-multipart==0.0.9
+
+# 公开年报 PDF 解析（Phase 2 导入）
+pdfplumber==0.11.4
+opencc-python-reimplemented==0.1.7
+
+# ===== 开发依赖 =====
+# 安装开发依赖：pip install -r requirements.txt && pip install -r requirements-dev.txt
+# 此处仅列出，便于查阅
+# pytest==8.2.0
+# httpx==0.27.0

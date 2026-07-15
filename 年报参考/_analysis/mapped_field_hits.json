@@ -1,0 +1,471 @@
+[
+  {
+    "statement": "balance",
+    "field": "total_assets",
+    "company_count": 10,
+    "rate": 1.0,
+    "companies": "000651,002555,300760,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "total_equity",
+    "company_count": 10,
+    "rate": 1.0,
+    "companies": "000651,002555,300760,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "accounts_payable",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "accounts_receivable",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "contract_liabilities",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "deferred_tax_assets",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "deferred_tax_liabilities",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "employee_benefits_payable",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "fixed_assets",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "intangible_assets",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "inventories",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "lease_liabilities",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "long_term_equity_investments",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "monetary_funds",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "non_current_liab_due_one_year",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "other_current_assets",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "other_non_current_assets",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "other_payables",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "other_receivables",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "prepayments",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "taxes_payable",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "total_current_assets",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "total_current_liabilities",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "total_liabilities",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "total_non_current_assets",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "total_non_current_liabilities",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "construction_in_progress",
+    "company_count": 8,
+    "rate": 0.8,
+    "companies": "000651,002555,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "trading_financial_assets",
+    "company_count": 8,
+    "rate": 0.8,
+    "companies": "000651,002555,600048,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "short_term_borrowings",
+    "company_count": 7,
+    "rate": 0.7,
+    "companies": "000651,002555,600048,600309,601933,603486,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "notes_payable",
+    "company_count": 5,
+    "rate": 0.5,
+    "companies": "000651,002555,600309,603486,688775"
+  },
+  {
+    "statement": "balance",
+    "field": "goodwill",
+    "company_count": 4,
+    "rate": 0.4,
+    "companies": "002555,600309,601933,688111"
+  },
+  {
+    "statement": "balance",
+    "field": "long_term_borrowings",
+    "company_count": 4,
+    "rate": 0.4,
+    "companies": "000651,600048,600309,601933"
+  },
+  {
+    "statement": "balance",
+    "field": "bonds_payable",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "600048,600309,603486"
+  },
+  {
+    "statement": "balance",
+    "field": "notes_receivable",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "600519,688111"
+  },
+  {
+    "statement": "cashflow",
+    "field": "cash_from_sales",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "cashflow",
+    "field": "cash_paid_for_goods",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "cashflow",
+    "field": "cash_paid_to_employees",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "cashflow",
+    "field": "net_cash_flow_operating",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "cashflow",
+    "field": "taxes_paid",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "cashflow",
+    "field": "cash_from_asset_disposal",
+    "company_count": 7,
+    "rate": 0.7,
+    "companies": "000651,600048,600309,600519,603486,688111,688775"
+  },
+  {
+    "statement": "cashflow",
+    "field": "cash_from_investments",
+    "company_count": 7,
+    "rate": 0.7,
+    "companies": "000651,600048,600309,600519,601933,688111,688775"
+  },
+  {
+    "statement": "cashflow",
+    "field": "cash_paid_for_assets",
+    "company_count": 6,
+    "rate": 0.6,
+    "companies": "000651,600048,600519,603486,688111,688775"
+  },
+  {
+    "statement": "cashflow",
+    "field": "cash_paid_for_investments",
+    "company_count": 6,
+    "rate": 0.6,
+    "companies": "000651,600048,600519,603486,688111,688775"
+  },
+  {
+    "statement": "cashflow",
+    "field": "cash_from_financing",
+    "company_count": 4,
+    "rate": 0.4,
+    "companies": "000651,300760,600048,603486"
+  },
+  {
+    "statement": "cashflow",
+    "field": "cash_paid_for_debt",
+    "company_count": 4,
+    "rate": 0.4,
+    "companies": "000651,300760,600048,603486"
+  },
+  {
+    "statement": "cashflow",
+    "field": "cash_paid_for_dividends",
+    "company_count": 4,
+    "rate": 0.4,
+    "companies": "000651,300760,600048,603486"
+  },
+  {
+    "statement": "cashflow",
+    "field": "net_cash_flow_investing",
+    "company_count": 4,
+    "rate": 0.4,
+    "companies": "000651,600048,600519,603486"
+  },
+  {
+    "statement": "cashflow",
+    "field": "net_cash_flow_financing",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048"
+  },
+  {
+    "statement": "cashflow",
+    "field": "net_increase_in_cash",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048"
+  },
+  {
+    "statement": "income",
+    "field": "investment_income",
+    "company_count": 10,
+    "rate": 1.0,
+    "companies": "000651,002555,300760,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "other_comprehensive_income",
+    "company_count": 10,
+    "rate": 1.0,
+    "companies": "000651,002555,300760,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "admin_expenses",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "credit_impairment_loss",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "financial_expenses",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "income_tax_expense",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "net_profit",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "non_operating_expense",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "non_operating_income",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "operating_cost",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "operating_profit",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "operating_revenue",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "other_income",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "rd_expenses",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "selling_expenses",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "taxes_and_surcharges",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "total_profit",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775"
+  },
+  {
+    "statement": "income",
+    "field": "asset_impairment_loss",
+    "company_count": 8,
+    "rate": 0.8,
+    "companies": "000651,002555,600048,600309,601933,603486,688111,688775"
+  }
+]

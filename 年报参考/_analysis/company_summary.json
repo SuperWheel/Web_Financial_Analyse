@@ -1,0 +1,414 @@
+[
+  {
+    "code": "000651",
+    "name": "格力电器",
+    "file": "000651_格力电器_2025年报.pdf",
+    "ok": true,
+    "status": "mapped",
+    "fill_mode": "AUTO_COMMIT_CANDIDATE",
+    "confidence": 0.966,
+    "report_year": 2025,
+    "unit_scale": 1.0,
+    "standard": "CAS",
+    "error": null,
+    "segments": 3,
+    "coverage": {
+      "balance": {
+        "core_total": 8,
+        "core_hit": 8,
+        "mapped_fields": 31,
+        "coverage": 1.0
+      },
+      "income": {
+        "core_total": 3,
+        "core_hit": 3,
+        "mapped_fields": 18,
+        "coverage": 1.0
+      },
+      "cashflow": {
+        "core_total": 1,
+        "core_hit": 1,
+        "mapped_fields": 15,
+        "coverage": 1.0
+      }
+    },
+    "mapped_counts": {
+      "balance": 31,
+      "income": 18,
+      "cashflow": 15
+    },
+    "unmapped_count": 200,
+    "issues": []
+  },
+  {
+    "code": "002555",
+    "name": "三七互娱",
+    "file": "002555_三七互娱_2025年报.pdf",
+    "ok": true,
+    "status": "mapped",
+    "fill_mode": "AUTO_COMMIT_CANDIDATE",
+    "confidence": 0.9702,
+    "report_year": 2025,
+    "unit_scale": 1.0,
+    "standard": "CAS",
+    "error": null,
+    "segments": 3,
+    "coverage": {
+      "balance": {
+        "core_total": 8,
+        "core_hit": 8,
+        "mapped_fields": 31,
+        "coverage": 1.0
+      },
+      "income": {
+        "core_total": 3,
+        "core_hit": 3,
+        "mapped_fields": 18,
+        "coverage": 1.0
+      },
+      "cashflow": {
+        "core_total": 1,
+        "core_hit": 1,
+        "mapped_fields": 5,
+        "coverage": 1.0
+      }
+    },
+    "mapped_counts": {
+      "balance": 31,
+      "income": 18,
+      "cashflow": 5
+    },
+    "unmapped_count": 56,
+    "issues": []
+  },
+  {
+    "code": "300760",
+    "name": "迈瑞医疗",
+    "file": "300760_迈瑞医疗_2025年报.pdf",
+    "ok": true,
+    "status": "mapped",
+    "fill_mode": "REJECT_OR_MANUAL",
+    "confidence": 0.793,
+    "report_year": 2025,
+    "unit_scale": 1.0,
+    "standard": "CAS",
+    "error": null,
+    "segments": 3,
+    "coverage": {
+      "balance": {
+        "core_total": 8,
+        "core_hit": 2,
+        "mapped_fields": 2,
+        "coverage": 0.25
+      },
+      "income": {
+        "core_total": 3,
+        "core_hit": 0,
+        "mapped_fields": 2,
+        "coverage": 0.0
+      },
+      "cashflow": {
+        "core_total": 1,
+        "core_hit": 0,
+        "mapped_fields": 5,
+        "coverage": 0.0
+      }
+    },
+    "mapped_counts": {
+      "balance": 2,
+      "income": 2,
+      "cashflow": 5
+    },
+    "unmapped_count": 85,
+    "issues": [
+      "核心字段命中不足（2/12）"
+    ]
+  },
+  {
+    "code": "600048",
+    "name": "保利发展",
+    "file": "600048_保利发展_2025年报.pdf",
+    "ok": true,
+    "status": "mapped",
+    "fill_mode": "AUTO_COMMIT_CANDIDATE",
+    "confidence": 0.9699,
+    "report_year": 2025,
+    "unit_scale": 1.0,
+    "standard": "CAS",
+    "error": null,
+    "segments": 3,
+    "coverage": {
+      "balance": {
+        "core_total": 8,
+        "core_hit": 8,
+        "mapped_fields": 30,
+        "coverage": 1.0
+      },
+      "income": {
+        "core_total": 3,
+        "core_hit": 3,
+        "mapped_fields": 18,
+        "coverage": 1.0
+      },
+      "cashflow": {
+        "core_total": 1,
+        "core_hit": 1,
+        "mapped_fields": 15,
+        "coverage": 1.0
+      }
+    },
+    "mapped_counts": {
+      "balance": 30,
+      "income": 18,
+      "cashflow": 15
+    },
+    "unmapped_count": 200,
+    "issues": []
+  },
+  {
+    "code": "600309",
+    "name": "万华化学",
+    "file": "600309_万华化学_2025年报.pdf",
+    "ok": true,
+    "status": "mapped",
+    "fill_mode": "AUTO_COMMIT_CANDIDATE",
+    "confidence": 0.9701,
+    "report_year": 2025,
+    "unit_scale": 1.0,
+    "standard": "CAS",
+    "error": null,
+    "segments": 3,
+    "coverage": {
+      "balance": {
+        "core_total": 8,
+        "core_hit": 8,
+        "mapped_fields": 32,
+        "coverage": 1.0
+      },
+      "income": {
+        "core_total": 3,
+        "core_hit": 3,
+        "mapped_fields": 18,
+        "coverage": 1.0
+      },
+      "cashflow": {
+        "core_total": 1,
+        "core_hit": 1,
+        "mapped_fields": 7,
+        "coverage": 1.0
+      }
+    },
+    "mapped_counts": {
+      "balance": 32,
+      "income": 18,
+      "cashflow": 7
+    },
+    "unmapped_count": 65,
+    "issues": []
+  },
+  {
+    "code": "600519",
+    "name": "贵州茅台",
+    "file": "600519_贵州茅台_2025年报.pdf",
+    "ok": true,
+    "status": "mapped",
+    "fill_mode": "AUTO_COMMIT_CANDIDATE",
+    "confidence": 0.97,
+    "report_year": 2025,
+    "unit_scale": 1.0,
+    "standard": "CAS",
+    "error": null,
+    "segments": 3,
+    "coverage": {
+      "balance": {
+        "core_total": 8,
+        "core_hit": 8,
+        "mapped_fields": 29,
+        "coverage": 1.0
+      },
+      "income": {
+        "core_total": 3,
+        "core_hit": 3,
+        "mapped_fields": 17,
+        "coverage": 1.0
+      },
+      "cashflow": {
+        "core_total": 1,
+        "core_hit": 1,
+        "mapped_fields": 10,
+        "coverage": 1.0
+      }
+    },
+    "mapped_counts": {
+      "balance": 29,
+      "income": 17,
+      "cashflow": 10
+    },
+    "unmapped_count": 71,
+    "issues": []
+  },
+  {
+    "code": "601933",
+    "name": "永辉超市",
+    "file": "601933_永辉超市_2025年报.pdf",
+    "ok": true,
+    "status": "mapped",
+    "fill_mode": "AUTO_COMMIT_CANDIDATE",
+    "confidence": 0.9706,
+    "report_year": 2026,
+    "unit_scale": 1.0,
+    "standard": "CAS",
+    "error": null,
+    "segments": 3,
+    "coverage": {
+      "balance": {
+        "core_total": 8,
+        "core_hit": 8,
+        "mapped_fields": 31,
+        "coverage": 1.0
+      },
+      "income": {
+        "core_total": 3,
+        "core_hit": 3,
+        "mapped_fields": 18,
+        "coverage": 1.0
+      },
+      "cashflow": {
+        "core_total": 1,
+        "core_hit": 1,
+        "mapped_fields": 6,
+        "coverage": 1.0
+      }
+    },
+    "mapped_counts": {
+      "balance": 31,
+      "income": 18,
+      "cashflow": 6
+    },
+    "unmapped_count": 73,
+    "issues": []
+  },
+  {
+    "code": "603486",
+    "name": "科沃斯",
+    "file": "603486_科沃斯_2025年报.pdf",
+    "ok": true,
+    "status": "mapped",
+    "fill_mode": "AUTO_COMMIT_CANDIDATE",
+    "confidence": 0.9698,
+    "report_year": 2025,
+    "unit_scale": 1.0,
+    "standard": "CAS",
+    "error": null,
+    "segments": 3,
+    "coverage": {
+      "balance": {
+        "core_total": 8,
+        "core_hit": 8,
+        "mapped_fields": 31,
+        "coverage": 1.0
+      },
+      "income": {
+        "core_total": 3,
+        "core_hit": 3,
+        "mapped_fields": 18,
+        "coverage": 1.0
+      },
+      "cashflow": {
+        "core_total": 1,
+        "core_hit": 1,
+        "mapped_fields": 12,
+        "coverage": 1.0
+      }
+    },
+    "mapped_counts": {
+      "balance": 31,
+      "income": 18,
+      "cashflow": 12
+    },
+    "unmapped_count": 68,
+    "issues": []
+  },
+  {
+    "code": "688111",
+    "name": "金山办公",
+    "file": "688111_金山办公_2025年报.pdf",
+    "ok": true,
+    "status": "mapped",
+    "fill_mode": "AUTO_COMMIT_CANDIDATE",
+    "confidence": 0.9701,
+    "report_year": 2025,
+    "unit_scale": 1.0,
+    "standard": "CAS",
+    "error": null,
+    "segments": 3,
+    "coverage": {
+      "balance": {
+        "core_total": 8,
+        "core_hit": 8,
+        "mapped_fields": 30,
+        "coverage": 1.0
+      },
+      "income": {
+        "core_total": 3,
+        "core_hit": 3,
+        "mapped_fields": 18,
+        "coverage": 1.0
+      },
+      "cashflow": {
+        "core_total": 1,
+        "core_hit": 1,
+        "mapped_fields": 9,
+        "coverage": 1.0
+      }
+    },
+    "mapped_counts": {
+      "balance": 30,
+      "income": 18,
+      "cashflow": 9
+    },
+    "unmapped_count": 61,
+    "issues": []
+  },
+  {
+    "code": "688775",
+    "name": "影石创新",
+    "file": "688775_影石创新_2025年报.pdf",
+    "ok": true,
+    "status": "mapped",
+    "fill_mode": "AUTO_COMMIT_CANDIDATE",
+    "confidence": 0.9697,
+    "report_year": 2025,
+    "unit_scale": 1.0,
+    "standard": "CAS",
+    "error": null,
+    "segments": 3,
+    "coverage": {
+      "balance": {
+        "core_total": 8,
+        "core_hit": 8,
+        "mapped_fields": 30,
+        "coverage": 1.0
+      },
+      "income": {
+        "core_total": 3,
+        "core_hit": 3,
+        "mapped_fields": 18,
+        "coverage": 1.0
+      },
+      "cashflow": {
+        "core_total": 1,
+        "core_hit": 1,
+        "mapped_fields": 9,
+        "coverage": 1.0
+      }
+    },
+    "mapped_counts": {
+      "balance": 30,
+      "income": 18,
+      "cashflow": 9
+    },
+    "unmapped_count": 56,
+    "issues": []
+  }
+]

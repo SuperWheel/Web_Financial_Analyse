@@ -1,0 +1,62 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+.venv*/
+venv/
+env/
+ENV/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ===== Node / 前端 =====
+node_modules/
+frontend/dist/
+frontend/node_modules/
+*.local
+.vite/
+.pnpm-store/
+frontend/dist/
+
+# ===== 编辑器 / IDE =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ===== 操作系统 =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== 项目数据 =====
+data/*.db
+data/*.db-journal
+data/*.sqlite
+data/*.sqlite3
+!data/.gitkeep
+data/imports/**
+!data/imports/.gitkeep
+
+# ===== 日志 / 临时 =====
+*.log
+.runtime/
+tmp/
+temp/
+
+# ===== 本地样例大文件（年报 PDF 不入库）=====
+年报参考/**/*.pdf
+年报参考/**/*.PDF
+
+# ===== Claude / 本地 agent =====
+.claude/

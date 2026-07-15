@@ -1,0 +1,2594 @@
+[
+  {
+    "statement": "balance",
+    "label_norm": "其他综合收益",
+    "company_count": 10,
+    "rate": 1.0,
+    "companies": "000651,002555,300760,600048,600309,600519,601933,603486,688111,688775",
+    "examples": "其他综合收益 | 其他综合收益"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "少数股东权益",
+    "company_count": 10,
+    "rate": 1.0,
+    "companies": "000651,002555,300760,600048,600309,600519,601933,603486,688111,688775",
+    "examples": "少数股东权益 | 少数股东权益"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "未分配利润",
+    "company_count": 10,
+    "rate": 1.0,
+    "companies": "000651,002555,300760,600048,600309,600519,601933,603486,688111,688775",
+    "examples": "未分配利润 | 未分配利润"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "盈余公积",
+    "company_count": 10,
+    "rate": 1.0,
+    "companies": "000651,002555,300760,600048,600309,600519,601933,603486,688111,688775",
+    "examples": "盈余公积 | 盈余公积"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "资本公积",
+    "company_count": 10,
+    "rate": 1.0,
+    "companies": "000651,002555,300760,600048,600309,600519,601933,603486,688111,688775",
+    "examples": "资本公积 | 资本公积"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其他流动负债",
+    "company_count": 9,
+    "rate": 0.9,
+    "companies": "000651,002555,600048,600309,600519,601933,603486,688111,688775",
+    "examples": "其他流动负债 | 其他流动负债"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "减：库存股",
+    "company_count": 8,
+    "rate": 0.8,
+    "companies": "000651,002555,300760,600048,600519,601933,603486,688111",
+    "examples": "减：库存股 | 减：库存股"
+  },
+  {
+    "statement": "income",
+    "label_norm": "其中：利息费用",
+    "company_count": 8,
+    "rate": 0.8,
+    "companies": "002555,600048,600309,600519,601933,603486,688111,688775",
+    "examples": "其中：利息费用 | 其中：利息费用"
+  },
+  {
+    "statement": "income",
+    "label_norm": "利息收入",
+    "company_count": 8,
+    "rate": 0.8,
+    "companies": "002555,600048,600309,600519,601933,603486,688111,688775",
+    "examples": "利息收入 | 利息收入"
+  },
+  {
+    "statement": "income",
+    "label_norm": "少数股东损益",
+    "company_count": 8,
+    "rate": 0.8,
+    "companies": "002555,600048,600309,600519,601933,603486,688111,688775",
+    "examples": "2.少数股东损益 | 2．少数股东损益（净亏损以“-”号填列）"
+  },
+  {
+    "statement": "income",
+    "label_norm": "归属于母公司股东的净利润",
+    "company_count": 8,
+    "rate": 0.8,
+    "companies": "002555,600048,600309,600519,601933,603486,688111,688775",
+    "examples": "1.归属于母公司股东的净利润 | 1．归属于母公司股东的净利润（净亏损以“-”号填列）"
+  },
+  {
+    "statement": "income",
+    "label_norm": "持续经营净利润",
+    "company_count": 8,
+    "rate": 0.8,
+    "companies": "002555,600048,600309,600519,601933,603486,688111,688775",
+    "examples": "1.持续经营净利润（净亏损以“－”号填列） | 1．持续经营净利润（净亏损以“-”号填列）"
+  },
+  {
+    "statement": "income",
+    "label_norm": "综合收益总额",
+    "company_count": 8,
+    "rate": 0.8,
+    "companies": "002555,300760,600309,600519,601933,603486,688111,688775",
+    "examples": "七、综合收益总额 | 综合收益总额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "营业总成本",
+    "company_count": 8,
+    "rate": 0.8,
+    "companies": "002555,600048,600309,600519,601933,603486,688111,688775",
+    "examples": "二、营业总成本 | 二、营业总成本"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "使用权资产",
+    "company_count": 7,
+    "rate": 0.7,
+    "companies": "002555,600309,600519,601933,603486,688111,688775",
+    "examples": "使用权资产 | 使用权资产"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其他权益工具投资",
+    "company_count": 7,
+    "rate": 0.7,
+    "companies": "000651,002555,600048,600309,603486,688111,688775",
+    "examples": "其他权益工具投资 | 其他权益工具投资"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "递延收益",
+    "company_count": 7,
+    "rate": 0.7,
+    "companies": "000651,600048,600309,601933,603486,688111,688775",
+    "examples": "递延收益 | 递延收益"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "支付其他与经营活动有关的现金",
+    "company_count": 7,
+    "rate": 0.7,
+    "companies": "002555,600309,600519,601933,603486,688111,688775",
+    "examples": "支付其他与经营活动有关的现金 | 支付其他与经营活动有关的现金"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "收到其他与经营活动有关的现金",
+    "company_count": 7,
+    "rate": 0.7,
+    "companies": "002555,600309,600519,601933,603486,688111,688775",
+    "examples": "收到其他与经营活动有关的现金 | 收到其他与经营活动有关的现金"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "经营活动现金流入小计",
+    "company_count": 7,
+    "rate": 0.7,
+    "companies": "002555,600309,600519,601933,603486,688111,688775",
+    "examples": "经营活动现金流入小计 | 经营活动现金流入小计"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "经营活动现金流出小计",
+    "company_count": 7,
+    "rate": 0.7,
+    "companies": "002555,600309,600519,601933,603486,688111,688775",
+    "examples": "经营活动现金流出小计 | 经营活动现金流出小计"
+  },
+  {
+    "statement": "income",
+    "label_norm": "公允价值变动收益(损失以“－”号填列)",
+    "company_count": 7,
+    "rate": 0.7,
+    "companies": "002555,600309,600519,601933,603486,688111,688775",
+    "examples": "公允价值变动收益（损失以“－”号填列） | 公允价值变动收益（损失以“－”号填列）"
+  },
+  {
+    "statement": "income",
+    "label_norm": "未分配利润",
+    "company_count": 7,
+    "rate": 0.7,
+    "companies": "002555,600309,600519,601933,603486,688111,688775",
+    "examples": "未分配利润 | 未分配利润"
+  },
+  {
+    "statement": "income",
+    "label_norm": "盈余公积",
+    "company_count": 7,
+    "rate": 0.7,
+    "companies": "002555,600309,600519,601933,603486,688111,688775",
+    "examples": "盈余公积 | 盈余公积"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其他非流动金融资产",
+    "company_count": 6,
+    "rate": 0.6,
+    "companies": "002555,600048,600519,601933,603486,688111",
+    "examples": "其他非流动金融资产 | 其他非流动金融资产"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "实收资本(或股本)",
+    "company_count": 6,
+    "rate": 0.6,
+    "companies": "600309,600519,601933,603486,688111,688775",
+    "examples": "实收资本（或股本） | 实收资本（或股本）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "投资性房地产",
+    "company_count": 6,
+    "rate": 0.6,
+    "companies": "000651,002555,600048,600519,601933,603486",
+    "examples": "投资性房地产 | 投资性房地产"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "负债和所有者权益(或股东权益)总计",
+    "company_count": 6,
+    "rate": 0.6,
+    "companies": "600309,600519,601933,603486,688111,688775",
+    "examples": "负债和所有者权益（或股东权益）总计 | 负债和所有者权益（或股东权益）总计"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "收到的税费返还",
+    "company_count": 6,
+    "rate": 0.6,
+    "companies": "002555,600309,601933,603486,688111,688775",
+    "examples": "收到的税费返还 | 收到的税费返还"
+  },
+  {
+    "statement": "income",
+    "label_norm": "(6)外币财务报表折算差额",
+    "company_count": 6,
+    "rate": 0.6,
+    "companies": "600309,600519,601933,603486,688111,688775",
+    "examples": "（6）外币财务报表折算差额 | （6）外币财务报表折算差额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "(一)归属于母公司所有者的综合收益总额",
+    "company_count": 6,
+    "rate": 0.6,
+    "companies": "600309,600519,601933,603486,688111,688775",
+    "examples": "（一）归属于母公司所有者的综合收益总额 | （一）归属于母公司所有者的综合收益总额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "(一)归属母公司所有者的其他综合收益的税后净额",
+    "company_count": 6,
+    "rate": 0.6,
+    "companies": "600309,600519,601933,603486,688111,688775",
+    "examples": "（一）归属母公司所有者的其他综合收益的税后净额 | （一）归属母公司所有者的其他综合收益的税后净额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "(二)归属于少数股东的综合收益总额",
+    "company_count": 6,
+    "rate": 0.6,
+    "companies": "600309,600519,601933,603486,688111,688775",
+    "examples": "（二）归属于少数股东的综合收益总额 | （二）归属于少数股东的综合收益总额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "所有者权益(或股东权益)合计",
+    "company_count": 6,
+    "rate": 0.6,
+    "companies": "600309,600519,601933,603486,688111,688775",
+    "examples": "所有者权益（或股东权益）合计 | 所有者权益（或股东权益）合计"
+  },
+  {
+    "statement": "income",
+    "label_norm": "负债和所有者权益(或股东权益)总计",
+    "company_count": 6,
+    "rate": 0.6,
+    "companies": "600309,600519,601933,603486,688111,688775",
+    "examples": "负债和所有者权益（或股东权益）总计 | 负债和所有者权益（或股东权益）总计"
+  },
+  {
+    "statement": "income",
+    "label_norm": "资产处置收益(损失以“－”号填列)",
+    "company_count": 6,
+    "rate": 0.6,
+    "companies": "600309,600519,601933,603486,688111,688775",
+    "examples": "资产处置收益（损失以“－”号填列） | 资产处置收益（损失以“－”号填列）"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "取得投资收益收到的现金",
+    "company_count": 5,
+    "rate": 0.5,
+    "companies": "600309,600519,603486,688111,688775",
+    "examples": "取得投资收益收到的现金 | 取得投资收益收到的现金"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "投资活动现金流入小计",
+    "company_count": 5,
+    "rate": 0.5,
+    "companies": "600309,600519,603486,688111,688775",
+    "examples": "投资活动现金流入小计 | 投资活动现金流入小计"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "综合收益总额",
+    "company_count": 5,
+    "rate": 0.5,
+    "companies": "002555,600519,601933,603486,688775",
+    "examples": "六、综合收益总额 | 六、综合收益总额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "(一)持续经营净利润",
+    "company_count": 5,
+    "rate": 0.5,
+    "companies": "002555,600309,600519,603486,688111",
+    "examples": "（一）持续经营净利润（净亏损以“－”号填列） | （一）持续经营净利润（净亏损以“－”号填列）"
+  },
+  {
+    "statement": "income",
+    "label_norm": "负债合计",
+    "company_count": 5,
+    "rate": 0.5,
+    "companies": "002555,600309,601933,603486,688111",
+    "examples": "负债合计 | 负债合计"
+  },
+  {
+    "statement": "income",
+    "label_norm": "资本公积",
+    "company_count": 5,
+    "rate": 0.5,
+    "companies": "002555,600309,601933,603486,688111",
+    "examples": "资本公积 | 资本公积"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "应收股利",
+    "company_count": 4,
+    "rate": 0.4,
+    "companies": "000651,002555,600309,688111",
+    "examples": "应收股利 | 应收股利"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "股本",
+    "company_count": 4,
+    "rate": 0.4,
+    "companies": "000651,002555,300760,600048",
+    "examples": "股本 | 股本"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "收到其他与投资活动有关的现金",
+    "company_count": 4,
+    "rate": 0.4,
+    "companies": "600309,600519,603486,688775",
+    "examples": "收到其他与投资活动有关的现金 | 收到其他与投资活动有关的现金"
+  },
+  {
+    "statement": "income",
+    "label_norm": "(3)其他权益工具投资公允价值变动",
+    "company_count": 4,
+    "rate": 0.4,
+    "companies": "600309,603486,688111,688775",
+    "examples": "（3）其他权益工具投资公允价值变动 | （3）其他权益工具投资公允价值变动"
+  },
+  {
+    "statement": "income",
+    "label_norm": "其他权益工具投资公允价值变动",
+    "company_count": 4,
+    "rate": 0.4,
+    "companies": "002555,300760,600309,688111",
+    "examples": "3.其他权益工具投资公允价值变动 | 其他权益工具投资公允价值变动"
+  },
+  {
+    "statement": "income",
+    "label_norm": "减：库存股",
+    "company_count": 4,
+    "rate": 0.4,
+    "companies": "002555,601933,603486,688111",
+    "examples": "减：库存股 | 减：库存股"
+  },
+  {
+    "statement": "income",
+    "label_norm": "实收资本(或股本)",
+    "company_count": 4,
+    "rate": 0.4,
+    "companies": "600309,601933,603486,688111",
+    "examples": "实收资本（或股本） | 实收资本（或股本）"
+  },
+  {
+    "statement": "income",
+    "label_norm": "非流动负债合计",
+    "company_count": 4,
+    "rate": 0.4,
+    "companies": "600309,601933,603486,688111",
+    "examples": "非流动负债合计 | 非流动负债合计"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "债权投资",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,600519,688775",
+    "examples": "债权投资 | 债权投资"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其中：利息费用",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048",
+    "examples": "其中：利息费用 | 其中：利息费用"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其他非流动负债",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "601933,688111,688775",
+    "examples": "其他非流动负债 | 其他非流动负债"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "净利润",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048",
+    "examples": "五、净利润（净亏损以“-”号填列） | 净利润"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "减：所得税费用",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048",
+    "examples": "减：所得税费用 | 减：所得税费用"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "减：营业外支出",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048",
+    "examples": "减：营业外支出 | 减：营业外支出"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "利息收入",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048",
+    "examples": "利息收入 | 利息收入"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "加：其他收益",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048",
+    "examples": "加：其他收益 | 加：其他收益"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "加：营业外收入",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048",
+    "examples": "加：营业外收入 | 加：营业外收入"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "研发费用",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048",
+    "examples": "研发费用 | 研发费用"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "税金及附加",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048",
+    "examples": "税金及附加 | 税金及附加"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "管理费用",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048",
+    "examples": "管理费用 | 管理费用"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "营业利润",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048",
+    "examples": "三、营业利润（亏损以“-”号填列） | 营业利润"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "衍生金融资产",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,600309,688775",
+    "examples": "衍生金融资产 | 衍生金融资产"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "财务费用",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048",
+    "examples": "财务费用 | 财务费用"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "销售费用",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "000651,300760,600048",
+    "examples": "销售费用 | 销售费用"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "预计负债",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "600309,601933,688775",
+    "examples": "预计负债 | 预计负债"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "投资活动现金流出小计",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "600519,603486,688111",
+    "examples": "投资活动现金流出小计 | 投资活动现金流出小计"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "支付其他与投资活动有关的现金",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "600519,603486,688111",
+    "examples": "支付其他与投资活动有关的现金 | 支付其他与投资活动有关的现金"
+  },
+  {
+    "statement": "income",
+    "label_norm": "一年内到期的非流动负债",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "002555,601933,603486",
+    "examples": "一年内到期的非流动负债 | 一年内到期的非流动负债"
+  },
+  {
+    "statement": "income",
+    "label_norm": "流动负债合计",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "002555,601933,603486",
+    "examples": "流动负债合计 | 流动负债合计"
+  },
+  {
+    "statement": "income",
+    "label_norm": "递延收益",
+    "company_count": 3,
+    "rate": 0.3,
+    "companies": "600309,601933,603486",
+    "examples": "递延收益 | 递延收益"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(一)综合收益总额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "（一）综合收益总额 | （一）综合收益总额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(三)利润分配",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "（三）利润分配 | （三）利润分配"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "上年年末余额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "一、上年年末余额 | 一、上年年末余额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "交易性金融负债",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "002555,600048",
+    "examples": "交易性金融负债 | 交易性金融负债"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "信用减值损失(损失)",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "信用减值损失（损失以“-”号填列） | 信用减值损失（损失以“-”号填列）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "偿还债务支付的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "偿还债务支付的现金 | 偿还债务支付的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "公允价值变动收益(损失)",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "公允价值变动收益（损失以“-”号填列） | 公允价值变动收益（损失以“-”号填列）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其中：子公司吸收少数股东投资收到的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "其中：子公司吸收少数股东投资收到的现金 | 其中：子公司吸收少数股东投资收到的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其中：子公司支付给少数股东的股利、利润",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "其中：子公司支付给少数股东的股利、利润 | 其中：子公司支付给少数股东的股利、利润"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其中：对联营企业和合营企业的投资收益",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "其中：对联营企业和合营企业的投资收益 | 其中：对联营企业和合营企业的投资收益"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其他债权投资",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600519",
+    "examples": "其他债权投资 | 其他债权投资"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其他权益工具",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "600048,603486",
+    "examples": "其他权益工具 | 其他权益工具"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其他综合收益的税后净额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "五、其他综合收益的税后净额 | 六、其他综合收益的税后净额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "减：营业成本",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "300760,600048",
+    "examples": "减：营业成本 | 减：营业成本"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "分配股利、利润或偿付利息支付的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "分配股利、利润或偿付利息支付的现金 | 分配股利、利润或偿付利息支付的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "利润总额(亏损总额)",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "四、利润总额（亏损总额以“-”号填列） | 四、利润总额（亏损总额以“-”号填列）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "取得借款收到的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "取得借款收到的现金 | 取得借款收到的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "取得子公司及其他营业单位支付的现金净额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "取得子公司及其他营业单位支付的现金净额 | 取得子公司及其他营业单位支付的现金净额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "取得投资收益收到的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "取得投资收益收到的现金 | 取得投资收益收到的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "吸收投资收到的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "吸收投资收到的现金 | 吸收投资收到的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "处置固定资产、无形资产和其他长期资产收回的现金净额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "处置固定资产、无形资产和其他长期资产收回的现金净额 | 处置固定资产、无形资产和其他长期资产收回的现金净额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "处置子公司及其他营业单位收到的现金净额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "处置子公司及其他营业单位收到的现金净额 | 处置子公司及其他营业单位收到的现金净额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "少数股东损益",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "300760,600048",
+    "examples": "少数股东损益 | 2．少数股东损益（净亏损以“-”号填列）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "应付股利",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600309",
+    "examples": "应付股利 | 应付股利"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "归属于母公司股东的净利润",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "300760,600048",
+    "examples": "归属于母公司股东的净利润 | 1．归属于母公司股东的净利润（净亏损以“-”号填列）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "投资支付的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "投资支付的现金 | 投资支付的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "投资活动产生的现金流量净额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "投资活动产生的现金流量净额 | 投资活动产生的现金流量净额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "投资活动现金流入小计",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "投资活动现金流入小计 | 投资活动现金流入小计"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "投资活动现金流出小计",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "投资活动现金流出小计 | 投资活动现金流出小计"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "持续经营净利润",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "300760,600048",
+    "examples": "持续经营净利润 | 1．持续经营净利润（净亏损以“-”号填列）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "支付其他与投资活动有关的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "支付其他与投资活动有关的现金 | 支付其他与投资活动有关的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "支付其他与筹资活动有关的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "支付其他与筹资活动有关的现金 | 支付其他与筹资活动有关的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "支付其他与经营活动有关的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "支付其他与经营活动有关的现金 | 支付其他与经营活动有关的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "支付的各项税费",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "支付的各项税费 | 支付的各项税费"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "支付给职工以及为职工支付的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "支付给职工以及为职工支付的现金 | 支付给职工以及为职工支付的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "收到其他与经营活动有关的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "收到其他与经营活动有关的现金 | 收到其他与经营活动有关的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "收到的税费返还",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "收到的税费返还 | 收到的税费返还"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "收回投资收到的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "收回投资收到的现金 | 收回投资收到的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "本年年初余额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "二、本年年初余额 | 二、本年年初余额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "现金及现金等价物净增加额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "五、现金及现金等价物净增加额 | 五、现金及现金等价物净增加额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "筹资活动产生的现金流量净额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "筹资活动产生的现金流量净额 | 筹资活动产生的现金流量净额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "筹资活动现金流入小计",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "筹资活动现金流入小计 | 筹资活动现金流入小计"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "筹资活动现金流出小计",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "筹资活动现金流出小计 | 筹资活动现金流出小计"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "经营活动产生的现金流量净额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "经营活动产生的现金流量净额 | 经营活动产生的现金流量净额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "经营活动现金流入小计",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "经营活动现金流入小计 | 经营活动现金流入小计"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "经营活动现金流出小计",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "经营活动现金流出小计 | 经营活动现金流出小计"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "综合收益总额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "七、综合收益总额 | 七、综合收益总额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "营业总成本",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "二、营业总成本 | 二、营业总成本"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "营业总收入",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "一、营业总收入 | 一、营业总收入"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "营业收入",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "300760,600048",
+    "examples": "营业收入 | 一、营业收入"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "衍生金融负债",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600309",
+    "examples": "衍生金融负债 | 衍生金融负债"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "购买商品、接受劳务支付的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "购买商品、接受劳务支付的现金 | 购买商品、接受劳务支付的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "购建固定资产、无形资产和其他长期资产支付的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "购建固定资产、无形资产和其他长期资产支付的现金 | 购建固定资产、无形资产和其他长期资产支付的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "资产减值损失(损失)",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "资产减值损失（损失以“-”号填列） | 资产减值损失（损失以“-”号填列）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "资产处置收益(损失)",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "资产处置收益（损失以“-”号填列） | 资产处置收益（损失以“-”号填列）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "销售商品、提供劳务收到的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "000651,600048",
+    "examples": "销售商品、提供劳务收到的现金 | 销售商品、提供劳务收到的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "长期应付款",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "600048,600309",
+    "examples": "长期应付款 | 长期应付款"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "长期应收款",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "600309,601933",
+    "examples": "长期应收款 | 长期应收款"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "(一)持续经营净利润",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "601933,688775",
+    "examples": "（一）持续经营净利润（净亏损以“－”号填列） | （一）持续经营净利润（净亏损以“－”号填列）"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "其他综合收益的税后净额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "002555,601933",
+    "examples": "五、其他综合收益的税后净额 | 五、其他综合收益的税后净额"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "净利润",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "601933,688775",
+    "examples": "四、净利润（净亏损以“－”号填列） | 四、净利润（净亏损以“－”号填列）"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "减：所得税费用",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "601933,688775",
+    "examples": "减：所得税费用 | 减：所得税费用"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "支付其他与筹资活动有关的现金",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "300760,603486",
+    "examples": "支付其他与筹资活动有关的现金 | 支付其他与筹资活动有关的现金"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "筹资活动现金流入小计",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "300760,603486",
+    "examples": "筹资活动现金流入小计 | 筹资活动现金流入小计"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "筹资活动现金流出小计",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "300760,603486",
+    "examples": "筹资活动现金流出小计 | 筹资活动现金流出小计"
+  },
+  {
+    "statement": "income",
+    "label_norm": "(二)归属于少数股东的其他综合收益的税后净额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "600519,688775",
+    "examples": "（二）归属于少数股东的其他综合收益的税后净额 | （二）归属于少数股东的其他综合收益的税后净额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "其他应付款",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "002555,601933",
+    "examples": "其他应付款 | 其他应付款"
+  },
+  {
+    "statement": "income",
+    "label_norm": "其他流动负债",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "601933,603486",
+    "examples": "其他流动负债 | 其他流动负债"
+  },
+  {
+    "statement": "income",
+    "label_norm": "外币财务报表折算差额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "002555,300760",
+    "examples": "6.外币财务报表折算差额 | 外币财务报表折算差额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "应交税费",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "002555,601933",
+    "examples": "应交税费 | 应交税费"
+  },
+  {
+    "statement": "income",
+    "label_norm": "应付职工薪酬",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "002555,601933",
+    "examples": "应付职工薪酬 | 应付职工薪酬"
+  },
+  {
+    "statement": "income",
+    "label_norm": "归属于少数股东的综合收益总额",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "002555,300760",
+    "examples": "归属于少数股东的综合收益总额 | 归属于少数股东的综合收益总额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "租赁负债",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "601933,603486",
+    "examples": "租赁负债 | 租赁负债"
+  },
+  {
+    "statement": "income",
+    "label_norm": "资产处置收益(损失)",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "002555,600048",
+    "examples": "资产处置收益（损失以“-”号填列） | 资产处置收益（损失以“-”号填列）"
+  },
+  {
+    "statement": "income",
+    "label_norm": "递延所得税负债",
+    "company_count": 2,
+    "rate": 0.2,
+    "companies": "600309,603486",
+    "examples": "递延所得税负债 | 递延所得税负债"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(一)不能重分类进损益的其他综合收益",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "（一）不能重分类进损益的其他综合收益"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(一)基本每股收益(元/股)",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "（一）基本每股收益（元/股）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(一)归属于母公司股东的其他综合收益的税后净额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "（一）归属于母公司股东的其他综合收益的税后净额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(一)归属于母公司股东的综合收益总额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "（一）归属于母公司股东的综合收益总额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(一)持续经营净利润",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "（一）持续经营净利润（净亏损以“-”号填列）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(二)将重分类进损益的其他综合收益",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "（二）将重分类进损益的其他综合收益"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(二)归属于少数股东的其他综合收益的税后净额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "（二）归属于少数股东的其他综合收益的税后净额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(二)归属于少数股东的综合收益总额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "（二）归属于少数股东的综合收益总额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(二)所有者投入和减少资本",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "（二）所有者投入和减少资本"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(二)稀释每股收益(元/股)",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "（二）稀释每股收益（元/股）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(二)股东投入和减少资本",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "（二）股东投入和减少资本"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(五)专项储备",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "（五）专项储备"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "(四)股东权益内部结转",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "（四）股东权益内部结转"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "一般风险准备",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "一般风险准备"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "一般风险准备五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "一般风险准备五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "专项储备五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "专项储备五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "买入返售金融资产",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "买入返售金融资产"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "信用减值损失",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "信用减值损失"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "信用减值损失(损失)五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "信用减值损失（损失以“-”号填列）五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "公允价值变动收益",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "公允价值变动收益"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "公允价值变动收益(损失)五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "公允价值变动收益（损失以“-”号填列）五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其中：对联营企业的投资收益",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "其中：对联营企业的投资收益"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其中：营业成本",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "其中：营业成本"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其中：营业成本五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "其中：营业成本五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其中：营业收入",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "其中：营业收入"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其中：营业收入五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "其中：营业收入五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其他",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "4．其他"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其他权益工具投资公允价值变动",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "3．其他权益工具投资公允价值变动"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其他权益工具持有者投入资本",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "2．其他权益工具持有者投入资本"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其他流动负债五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "其他流动负债五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其他综合收益五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "其他综合收益五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "其他综合收益的税后净额五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "六、其他综合收益的税后净额五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "减：库存股五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "减：库存股五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "减：所得税费用五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "减：所得税费用五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "减：营业外支出五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "减：营业外支出五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "减：营业成本十六、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "减：营业成本十六、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "利息支出五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "利息支出五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "利息收入五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "利息收入五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "利润总额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "利润总额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "加：其他收益五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "加：其他收益五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "加：营业外收入五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "加：营业外收入五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "发放贷款和垫款",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "发放贷款和垫款"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "号填列)",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "号填列）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "合同资产",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "688111",
+    "examples": "合同资产"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "吸收存款及同业存放",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "吸收存款及同业存放"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "吸收存款及同业存放五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "吸收存款及同业存放五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "外币财务报表折算差额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "6．外币财务报表折算差额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "存放中央银行和同业款项净增加额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "存放中央银行和同业款项净增加额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "客户存款和同业存放款项净增加额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "客户存款和同业存放款项净增加额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "客户贷款及垫款净增加额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "客户贷款及垫款净增加额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "对所有者(或股东)的分配",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "3．对所有者（或股东）的分配"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "开发支出",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "开发支出"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "归属于少数股东的其他综合收益的税后净额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "归属于少数股东的其他综合收益的税后净额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "归属于少数股东的综合收益总额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "归属于少数股东的综合收益总额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "归属于母公司所有者的其他综合收益的税后净额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "归属于母公司所有者的其他综合收益的税后净额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "归属于母公司所有者的综合收益总额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "归属于母公司所有者的综合收益总额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "所有者投入的普通股",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "1．所有者投入的普通股"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "手续费及佣金支出",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "手续费及佣金支出"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "手续费及佣金收入",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "手续费及佣金收入"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "投资收益",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "投资收益"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "投资收益(损失)",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "投资收益（损失以“-”号填列）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "投资收益(损失)五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "投资收益（损失以“-”号填列）五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "投资收益(损失)十六、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "投资收益（损失以“-”号填列）十六、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "拆出资金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "拆出资金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "支付其他与投资活动有关的现金五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "支付其他与投资活动有关的现金五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "支付其他与筹资活动有关的现金五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "支付其他与筹资活动有关的现金五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "支付其他与经营活动有关的现金五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "支付其他与经营活动有关的现金五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "支付利息、手续费及佣金的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "支付利息、手续费及佣金的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "收到其他与投资活动有关的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "收到其他与投资活动有关的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "收到其他与投资活动有关的现金五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "收到其他与投资活动有关的现金五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "收到其他与筹资活动有关的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "收到其他与筹资活动有关的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "收到其他与筹资活动有关的现金五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "收到其他与筹资活动有关的现金五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "收到其他与经营活动有关的现金五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "收到其他与经营活动有关的现金五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "收取利息、手续费及佣金的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "收取利息、手续费及佣金的现金"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "未分配利润五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "未分配利润五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "本年增减变动金额(减少)",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "三、本年增减变动金额（减少以“-”号填列）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "本年年末余额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "四、本年年末余额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "本期使用",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "2．本期使用"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "本期增减变动金额(减少)",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "三、本期增减变动金额（减少以“-”号填列）"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "本期提取",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "1．本期提取"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "权益法下可转损益的其他综合收益",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "1．权益法下可转损益的其他综合收益"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "永续债",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "永续债"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "珠海格力电器股份有限公司",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "珠海格力电器股份有限公司"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "生产性生物资产",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "601933",
+    "examples": "生产性生物资产"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "盈余公积五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "盈余公积五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "研发费用五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "研发费用五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "税金及附加五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "税金及附加五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "管理费用五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "管理费用五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "股份支付计入所有者权益的金额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "3．股份支付计入所有者权益的金额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "股本五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "股本五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "营业收入十六、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "一、营业收入十六、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "衍生金融负债五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "衍生金融负债五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "负债和股东权益附注五",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "负债和股东权益附注五"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "财务费用五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "财务费用五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "资产减值损失",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "资产减值损失"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "资产减值损失(损失)五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "资产减值损失（损失以“-”号填列）五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "资产处置收益",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "资产处置收益"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "资产处置收益(损失)五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "资产处置收益（损失以“-”号填列）五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "资本公积五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "资本公积五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "递延收益五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "递延收益五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "重新计量设定受益计划变动额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "1．重新计量设定受益计划变动额"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "销售费用五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "销售费用五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "长期应付款五、",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "长期应付款五、"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "附注五",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "附注五"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "项目附注",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "项目附注"
+  },
+  {
+    "statement": "balance",
+    "label_norm": "额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "000651",
+    "examples": "额"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "(一)不能重分类进损益的其他综合收益",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "002555",
+    "examples": "（一）不能重分类进损益的其他综合收益"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "(二)将重分类进损益的其他综合收益",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "601933",
+    "examples": "（二）将重分类进损益的其他综合收益"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "其他权益工具投资公允价值变动",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "002555",
+    "examples": "3.其他权益工具投资公允价值变动"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "加：年初现金及现金等价物余额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "加：年初现金及现金等价物余额"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "响",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "响"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "存放中央银行和同业款项净增加额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "存放中央银行和同业款项净增加额"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "客户存款和同业存放款项净增加额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "客户存款和同业存放款项净增加额"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "客户贷款及垫款净增加额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "客户贷款及垫款净增加额"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "年末现金及现金等价物余额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "六、年末现金及现金等价物余额"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "拆出资金净增加额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "拆出资金净增加额"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "支付利息、手续费及佣金的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "支付利息、手续费及佣金的现金"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "收到其他与筹资活动有关的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "收到其他与筹资活动有关的现金"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "收到的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "收到的现金"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "收取利息、手续费及佣金的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "收取利息、手续费及佣金的现金"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "权益法下可转损益的其他综合收益",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "601933",
+    "examples": "1.权益法下可转损益的其他综合收益"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "现金"
+  },
+  {
+    "statement": "cashflow",
+    "label_norm": "附注五",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "附注五"
+  },
+  {
+    "statement": "income",
+    "label_norm": "(2)其他债权投资公允价值变动",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "（2）其他债权投资公允价值变动"
+  },
+  {
+    "statement": "income",
+    "label_norm": "(5)现金流量套期储备",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600309",
+    "examples": "（5）现金流量套期储备"
+  },
+  {
+    "statement": "income",
+    "label_norm": "(一)基本每股收益(元/股)",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "601933",
+    "examples": "（一）基本每股收益(元/股)"
+  },
+  {
+    "statement": "income",
+    "label_norm": "(一)综合收益总额---",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "（一）综合收益总额---"
+  },
+  {
+    "statement": "income",
+    "label_norm": "(二)稀释每股收益(元/股)",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "601933",
+    "examples": "（二）稀释每股收益(元/股)"
+  },
+  {
+    "statement": "income",
+    "label_norm": "公允价值变动收益(损失)",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "公允价值变动收益（损失以“-”号填列）"
+  },
+  {
+    "statement": "income",
+    "label_norm": "其他权益工具",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "603486",
+    "examples": "其他权益工具"
+  },
+  {
+    "statement": "income",
+    "label_norm": "其他非流动负债",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "688111",
+    "examples": "其他非流动负债"
+  },
+  {
+    "statement": "income",
+    "label_norm": "净额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "净额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "利息支出",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "利息支出"
+  },
+  {
+    "statement": "income",
+    "label_norm": "合同负债",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "601933",
+    "examples": "合同负债"
+  },
+  {
+    "statement": "income",
+    "label_norm": "基本每股收益",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "基本每股收益"
+  },
+  {
+    "statement": "income",
+    "label_norm": "应付债券",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "603486",
+    "examples": "应付债券"
+  },
+  {
+    "statement": "income",
+    "label_norm": "应付票据",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "601933",
+    "examples": "应付票据"
+  },
+  {
+    "statement": "income",
+    "label_norm": "应付账款",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "601933",
+    "examples": "应付账款"
+  },
+  {
+    "statement": "income",
+    "label_norm": "归属于母公司所有者的其他综合收益的税后净额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600048",
+    "examples": "归属于母公司所有者的其他综合收益的税后净额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "归属于母公司所有者的综合收益总额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "002555",
+    "examples": "归属于母公司所有者的综合收益总额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "归属于母公司股东的综合收益总额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "归属于母公司股东的综合收益总额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "归属母公司所有者的其他综合收益的税后净额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "002555",
+    "examples": "归属母公司所有者的其他综合收益的税后净额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "所有者权益合计",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "002555",
+    "examples": "所有者权益合计"
+  },
+  {
+    "statement": "income",
+    "label_norm": "手续费及佣金支出",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "600519",
+    "examples": "手续费及佣金支出"
+  },
+  {
+    "statement": "income",
+    "label_norm": "投资支付的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "投资支付的现金"
+  },
+  {
+    "statement": "income",
+    "label_norm": "投资活动产生的现金流量净额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "投资活动产生的现金流量净额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "投资活动现金流入小计",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "投资活动现金流入小计"
+  },
+  {
+    "statement": "income",
+    "label_norm": "投资活动现金流出小计",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "投资活动现金流出小计"
+  },
+  {
+    "statement": "income",
+    "label_norm": "支付其他与投资活动有关的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "支付其他与投资活动有关的现金"
+  },
+  {
+    "statement": "income",
+    "label_norm": "支付其他与经营活动有关的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "支付其他与经营活动有关的现金"
+  },
+  {
+    "statement": "income",
+    "label_norm": "支付的各项税费",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "支付的各项税费"
+  },
+  {
+    "statement": "income",
+    "label_norm": "支付给职工以及为职工支付的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "支付给职工以及为职工支付的现金"
+  },
+  {
+    "statement": "income",
+    "label_norm": "收到其他与投资活动有关的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "收到其他与投资活动有关的现金"
+  },
+  {
+    "statement": "income",
+    "label_norm": "收到其他与经营活动有关的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "收到其他与经营活动有关的现金"
+  },
+  {
+    "statement": "income",
+    "label_norm": "收到的税费返还",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "收到的税费返还"
+  },
+  {
+    "statement": "income",
+    "label_norm": "收回投资收到的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "收回投资收到的现金"
+  },
+  {
+    "statement": "income",
+    "label_norm": "期资产支付的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "期资产支付的现金"
+  },
+  {
+    "statement": "income",
+    "label_norm": "期资产收回的现金净额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "期资产收回的现金净额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "本年年初余额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "一、本年年初余额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "本年年末余额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "三、本年年末余额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "现金净额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "现金净额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "益-",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "益-"
+  },
+  {
+    "statement": "income",
+    "label_norm": "益---",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "益---"
+  },
+  {
+    "statement": "income",
+    "label_norm": "稀释每股收益",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "稀释每股收益"
+  },
+  {
+    "statement": "income",
+    "label_norm": "经营活动产生的现金流量净额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "经营活动产生的现金流量净额"
+  },
+  {
+    "statement": "income",
+    "label_norm": "经营活动现金流入小计",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "经营活动现金流入小计"
+  },
+  {
+    "statement": "income",
+    "label_norm": "经营活动现金流出小计",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "经营活动现金流出小计"
+  },
+  {
+    "statement": "income",
+    "label_norm": "股-",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "股-"
+  },
+  {
+    "statement": "income",
+    "label_norm": "股本",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "002555",
+    "examples": "股本"
+  },
+  {
+    "statement": "income",
+    "label_norm": "负债和所有者权益总计",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "002555",
+    "examples": "负债和所有者权益总计"
+  },
+  {
+    "statement": "income",
+    "label_norm": "购买商品、接受劳务支付的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "购买商品、接受劳务支付的现金"
+  },
+  {
+    "statement": "income",
+    "label_norm": "转留存收益---",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "转留存收益---"
+  },
+  {
+    "statement": "income",
+    "label_norm": "销售商品、提供劳务收到的现金",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "销售商品、提供劳务收到的现金"
+  },
+  {
+    "statement": "income",
+    "label_norm": "长期借款",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "601933",
+    "examples": "长期借款"
+  },
+  {
+    "statement": "income",
+    "label_norm": "附注五",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "附注五"
+  },
+  {
+    "statement": "income",
+    "label_norm": "预收款项",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "601933",
+    "examples": "预收款项"
+  },
+  {
+    "statement": "income",
+    "label_norm": "额",
+    "company_count": 1,
+    "rate": 0.1,
+    "companies": "300760",
+    "examples": "额"
+  }
+]
