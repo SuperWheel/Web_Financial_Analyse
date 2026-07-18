@@ -4,6 +4,21 @@
 
 ---
 
+## [2026-07-18] Phase C1c —— StatementDraftTables + useImportReviewQueue
+
+**需求简述**：收尾 ImportView 拆分：三表 draft 展示 + 核对队列 composable。
+
+**实现**：
+- `components/import/StatementDraftTables.vue`
+- `composables/useImportReviewQueue.ts`（队列/软保存/单份与批量入库）
+- `ImportView.vue` 瘦身为 tab 壳：**~245 行**（原 ~1600）
+
+**验证**：type-check + build 通过。
+
+**下一步**：C1 可宣告完成；可选 B4 单测或 C2 CompareView。
+
+---
+
 ## [2026-07-18] Phase C1b —— 抽出 CninfoSearchPanel
 
 **需求简述**：继续拆 ImportView，在线拉取 tab 整段下沉。
