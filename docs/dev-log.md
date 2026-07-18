@@ -4,6 +4,23 @@
 
 ---
 
+## [2026-07-18] Phase A4 —— 切片提交 post-1.0 工作区
+
+**需求简述**：将 ~2k 行混合未提交改动按可验证切片 commit。
+
+**提交（main ahead 5，未 push）**：
+1. `8dec51b` fix(import): prefer cover issuer over related-party names
+2. `d5665b4` feat(fetch): CNINFO multi-year batch download and industry prefill
+3. `52cc926` feat(import): review queue, mapping quality, and unmapped table
+4. `6c9be53` chore: restore frontend build gate and add scripts/check.sh
+5. `e198081` docs: archive evaluation, reliability plan, and post-1.0 status
+
+**验证**：提交前 `./scripts/check.sh` 全绿；提交后工作区干净。
+
+**下一步**：Phase B CI；或按需 push。
+
+---
+
 ## [2026-07-18] Phase A —— 恢复可靠交付（A1–A3/A5）
 
 **需求简述**：按可靠性计划执行 Phase A：修编译债、恢复门禁、一键检查、文档对齐。
