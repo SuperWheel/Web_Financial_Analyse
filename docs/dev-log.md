@@ -4,6 +4,24 @@
 
 ---
 
+## [2026-07-18] Phase B1 —— GitHub Actions CI
+
+**需求简述**：把本地 `scripts/check.sh` 接到远程自动门禁。
+
+**实现**：
+- 新增 `.github/workflows/ci.yml`
+- 触发：`push` / `pull_request` → `main`
+- 并行 jobs：
+  - backend：Python 3.12 + pip cache · `requirements.txt` + `requirements-dev.txt` · `pytest -q`
+  - frontend：Node 22 + npm cache · `npm ci` · `type-check` · `build`
+- README / AGENTS / 可靠性计划标注 CI 入口
+
+**验证**：workflow YAML 就位；本地命令集此前已由 check.sh 跑绿。push 后看 Actions 是否全绿。
+
+**下一步**：确认 Actions 绿；可选 B2 Ruff / B3 ESLint，或 C1 拆 ImportView。
+
+---
+
 ## [2026-07-18] Phase A4 —— 切片提交 post-1.0 工作区
 
 **需求简述**：将 ~2k 行混合未提交改动按可验证切片 commit。

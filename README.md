@@ -158,6 +158,8 @@ cd backend && source .venv/bin/activate && pytest -q
 cd frontend && npm run type-check && npm run build
 ```
 
+GitHub Actions（`.github/workflows/ci.yml`）在 `push` / `pull_request` → `main` 时自动跑同一套检查（backend pytest ∥ frontend type-check + build）。
+
 Post-1.0 可靠性计划见 [`docs/plans/2026-07-18-post1.0-reliability-plan.md`](./docs/plans/2026-07-18-post1.0-reliability-plan.md)。
 
 ---

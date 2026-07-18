@@ -69,7 +69,7 @@ Web_Financial_Analyse/
 
 工程可靠性计划：[[docs/plans/2026-07-18-post1.0-reliability-plan.md]]（A 交付门禁 → B CI → C 拆视图 → D 黄金样本）。
 
-本地一键检查：`./scripts/check.sh`（pytest + type-check + build）。
+本地一键检查：`./scripts/check.sh`（pytest + type-check + build）。CI：`.github/workflows/ci.yml`（push/PR → main）。
 
 ## 启动方式
 
