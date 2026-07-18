@@ -4,6 +4,209 @@
 
 ---
 
+## [2026-07-18] Phase A —— 恢复可靠交付（A1–A3/A5）
+
+**需求简述**：按可靠性计划执行 Phase A：修编译债、恢复门禁、一键检查、文档对齐。
+
+**完成**：
+- **A1**：`ImportView` Excel 期间列抽 `formatPeriodLabels`，去掉模板内 TS 注解。
+- **A2**：安装 Node 22；清 `vue-tsc -b` 存量错误（excel/export content-type、upload onError、ratioInsights 历史点类型、Analysis/Compare 未用变量与模板类型）。
+- **A3**：新增 `scripts/check.sh`（pytest → type-check → build；自动找 venv/node@22）。
+- **A5**：`openspec/project.md` / `AGENTS.md` P2 标「进行中」；README 补 Node 要求与 check 入口；计划状态更新。
+
+**验证**：`./scripts/check.sh` → **60 passed** + type-check + build **全绿**。
+
+**未做（A4）**：工作区仍为大批量未切片提交；需用户确认后再按 010 / 公司名 / UX / 文档 分 commit。
+
+**下一步**：A4 切片提交 → Phase B CI。
+
+---
+
+## [2026-07-18] Plan —— Post-1.0 可靠性修改计划
+
+**需求简述**：针对评价文档中的问题，制定可执行修改计划。
+
+**产物**：`docs/plans/2026-07-18-post1.0-reliability-plan.md`
+
+**结构**：
+- Phase A（P0）：修模板 TS、恢复 type-check/build、check.sh、按切片提交未提交改动、文档对齐
+- Phase B：CI + 最小 Ruff/ESLint + 关键纯函数单测
+- Phase C：Import → Compare → Analysis 拆分（行为不变）
+- Phase D：DB 备份、PDF 黄金样本、L0 追溯
+- Phase E：核对编辑 / 同比边角 → 港股 / EDGAR（延后）
+
+**第一刀**：A1 修 ImportView Excel 期间列注解 → A2 工具链 → A4 拆 commit。
+
+---
+
+## [2026-07-18] Docs —— 审阅并归档项目评价
+
+**需求简述**：分析《项目评价与改进建议》是否有理，加今日日期并归档。
+
+**审阅结论**：总体有道理，可作 post-1.0 工程优先级参考。
+- **成立**：闭环/人审/L0L1/分层/60 测/巨型视图行数/缺 CI/ADD COLUMN 迁移/未提交 ~1989 行/`ImportView` 模板 TS 注解/暂缓多用户云行情 等均与仓库一致。
+- **限定**：「前端无法编译」→ 交付门禁未闭环（语法债+本机 node 缺失）；P2 核对页 unmapped 当日已部分完成。
+- **采纳**：Phase A→D 先稳 CAS 主路径；E 再港股/EDGAR；不并行大拆+扩准则。
+
+**归档**：根目录原稿 → `docs/archive/2026-07-18-项目评价与改进建议.md`（文首归档元数据 + 附录核对意见）。
+
+**下一步（Phase A）**：修 Excel 预览模板类型注解；恢复 type-check/build；按切片提交未提交改动。
+
+---
+
+## [2026-07-18] Docs —— 项目评价与改进建议
+
+**需求简述**：对当前项目进行整体评价，并在项目根目录形成可执行的 Markdown 建议文档。
+
+**模式**：Vibe（仅文档）
+
+**主要内容**：
+- 从产品闭环、架构、测试、数据可靠性和可维护性评价当前项目。
+- 区分 v1.0.0 基线与当前 post-1.0 在研工作区状态。
+- 记录后端 `60 passed` 以及当前前端模板编译错误。
+- 给出恢复交付、质量门禁、前端拆分、数据可靠性和产品增强五阶段路线。
+- 补充各阶段验收标准、建议指标及暂缓事项。
+
+**变更文件**：`项目评价与改进建议.md`、`docs/dev-log.md`
+
+**验证**：检查 Markdown 标题层级、代码块、表格与任务清单结构。
+
+---
+
+## [2026-07-17] Vibe —— 导入核对页映射质量 / unmapped
+
+**需求简述**：P2 导入体验修补——核对页此前不展示后端已有的 `coverage` / `unmapped` / `issues`，入库前难判断映射质量。
+
+**模式**：Vibe（前端为主，后端字段已齐）
+
+**关键决策**：
+- 核对页新增「映射质量」区块：三表核心科目覆盖进度条、总体覆盖%、置信度、问题条数。
+- 未映射科目表：原文科目 / 金额 / 页 / 原因（中文）；按报表筛选。
+- 状态条带上覆盖率；覆盖 < 50% 时单份/批量入库二次确认。
+- API 类型收紧：`CoverageStats` / `UnmappedRow`。
+
+**变更文件**：`frontend/src/api/importFiling.ts`、`frontend/src/views/ImportView.vue`、`docs/dev-log.md`
+
+**验证**：
+- 浏览器注入 job `#29`：显示「核心科目覆盖 100%」「未映射科目（200）」「置信度 97%」及原因标签；按表筛选计数一致。
+- 覆盖率聚合逻辑单元烟测：hit/total 与 pct 正确。
+
+**下一步**：分析同比边角 / 导入核对可编辑金额；或港股 GAAP（P3）。
+
+---
+
+## [2026-07-16] Fix —— 年报公司名识别成关联方（红旗连锁）
+
+**现象**：巨潮下载永辉（601933）年报后，核对页公司名显示「成都红旗连锁股份有限公司」。
+
+**根因（非下错年报）**：
+1. 文件名/代码正确：`601933_*_永辉超市…pdf`，`company_code_hint=601933`。
+2. PDF 封面是永辉；释义表有「红旗连锁 指 成都红旗连锁股份有限公司」。
+3. `guess_company_name` 在前 25 页全文里按「含股份+最长」排序，关联方全称更长 → 误选。
+4. `create_job_from_upload` 合并策略「解析优先」，错误名覆盖了巨潮预填简称。
+
+**修复**：
+- `guess_company_name`：优先法定中文名/封面前 800 字最早发行人；跳过「简称 指 全称」释义行；`公司代码` 纳入股票代码正则。
+- `build_profile`：公司/代码/年份优先封面+前几页。
+- 巨潮/URL 拉取：`company_hint/code/year` **预填优先**于解析结果。
+
+**验证**：✅ 永辉 2024 profile → 永辉超市股份有限公司 / 601933；`pytest` import+fetch **20 passed**。
+
+---
+
+
+## [2026-07-16] Vibe —— 在线拉取多年预览 + 批量确认入库
+
+**需求简述**：「导入勾选」只下载建 job，未进入核对/入库；需要多年预览左右切换与批量确认入库。
+
+**模式**：Vibe（前端 ImportView）
+
+**关键决策**：
+- 下载解析成功后 `enterReviewQueue`：自动跳转「年报 PDF」核对页，绑定可选 `company_id`。
+- 多 job 队列：上一份/下一份 + 年份芯片切换；切换前软保存当前 draft。
+- 操作：**确认本份入库** / **批量确认入库（N）**；`commit` 时传入关联企业。
+- 单份上传 PDF 也走同一队列路径。
+
+**变更文件**：`frontend/src/views/ImportView.vue`、`docs/dev-log.md`
+
+**验证**：`bun run type-check` 通过。
+
+**下一步**：核对页展示 unmapped / 覆盖率；或港股 GAAP。
+
+---
+
+
+## [2026-07-16] Vibe —— 在线拉取 UX：统一年份 + 勾选导入 + 新建企业
+
+**需求简述**：单年/多年双入口不直观；需统一年份输入、勾选导入；导入页可新建关联企业并自动填代码/行业。
+
+**模式**：Vibe
+
+**关键决策**：
+- 年份输入合一：`2024` / `2022-2024` / `2022,2023`；`POST /cninfo/search-years` 多年检索。
+- 候选表 checkbox +「导入勾选」：按勾选 PDF **逐份**下载建 job（尊重勾选，非仅按年首选）。
+- 新建企业对话框：预填巨潮简称/代码；行业来自东财 `f127`（`fetching/eastmoney.py`，失败可空）。
+- 选中证券时按 code/name 自动匹配本地企业；不再默认强绑列表第一家。
+
+**变更文件**：
+- 后端：`services/fetching/{service,eastmoney}.py`、`schemas/fetch.py`、`api/fetch.py`、`tests/test_fetch_api.py`
+- 前端：`api/fetchFiling.ts`、`views/ImportView.vue`
+- 文档：`docs/api.md`、`docs/dev-log.md`
+
+**验证**：✅ `pytest` **58 passed**；`bun run type-check` 通过。
+
+**下一步**：导入核对/unmapped 体验；或港股 GAAP。
+
+---
+
+
+## [2026-07-16] Spec 010 —— 巨潮批量多年拉取
+
+**需求简述**：同一 A 股证券连续多年年报一次提交：检索 → 下载 → 建 import job；单年失败不中断；不自动入库。
+
+**模式**：Spec（变更包 010）
+
+**关键决策**：
+- `POST /api/imports/fetch/cninfo/batch`：`q`/`code` + `years`（1–12，去重升序）+ 可选 `company_id`。
+- 服务层 `batch_cninfo_download`：解析证券一次；按年 `search_annual_reports` → 首选候选 → `create_job_from_cninfo_candidate`；`ok|empty|error` 汇总。
+- 同步串行 + 009 限速；不引入 batch 任务表 / 异步队列。
+- 前端：年份起止 +「批量下载解析」+ 结果表（打开核对 → `GET /imports/filings/{id}`）。
+
+**变更文件**：
+- Spec：`openspec/changes/010-batch-filing-fetch/*`
+- 后端：`services/fetching/service.py`、`schemas/fetch.py`、`api/fetch.py`、`tests/test_fetch_api.py`
+- 前端：`api/fetchFiling.ts`、`views/ImportView.vue`
+- 文档：`docs/{api,architecture,dev-log}.md`、`AGENTS.md`、`openspec/project.md`
+
+**验证**：✅ `pytest` **56 passed**（fetch 11，含 batch 4）；`bun run type-check` 通过。
+
+**下一步**：导入/分析体验修补；或港股 GAAP / EDGAR。
+
+---
+
+
+## [2026-07-16] Docs —— v1.0 对齐 + post-1.0 backlog
+
+**需求简述**：v1.0.0 已发布后统一文档状态，标清已交付范围与下一步 backlog，再开 post-1.0 功能。
+
+**模式**：Vibe（仅文档）
+
+**关键决策**：
+- `openspec/project.md`：业务范围改为 v1.0 已覆盖；Excel/导入/巨潮写入已交付；新增 Post-1.0 backlog 表（批量拉取 → 体验修补 → 港股 → EDGAR）。
+- `docs/architecture.md`：补能力切片、api/services 对照、L0/L1、变更包 001–009 索引与 post-1.0 边界。
+- `AGENTS.md`：当前状态标 v1.0.0；补 Import/fetch/excel 范式与 backlog。
+- `openspec/changes/001-init-project/tasks.md`：Phase 1–5 勾选与独立包对齐；港股/批量仍 open。
+- `docs/api.md` 页脚指向 project backlog。
+
+**变更文件**：`openspec/project.md`、`docs/architecture.md`、`AGENTS.md`、`openspec/changes/001-init-project/tasks.md`、`docs/api.md`、`docs/dev-log.md`
+
+**验证**：文档交叉引用一致；无代码改动。
+
+**下一步**：按 backlog 默认序做 **批量多年拉取**（Spec 010 候选），或用户指定体验修补 / 港股 / EDGAR。
+
+---
+
+
 ## [2026-07-15] Vibe —— 比率分析页对齐多期对比体验
 
 **需求简述**：按多期对比方式优化比率分析：趋势图可调 Y 轴、布局更紧凑。

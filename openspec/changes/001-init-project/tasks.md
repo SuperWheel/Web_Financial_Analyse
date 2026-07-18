@@ -1,6 +1,6 @@
 # Tasks 001: 初始化项目框架（含后续 Phase 规划）
 
-> 复选框状态约定：`[x]` 已完成；`[ ]` 未完成。本变更包（001）只完成 Phase 0；Phase 1~4 为后续独立变更包，列于此供规划。
+> 复选框状态约定：`[x]` 已完成；`[ ]` 未完成。本变更包（001）只交付 Phase 0 代码；下方 Phase 1–5 为历史规划索引，**v1.0.0 时均已由独立变更包完成**（港股/EDGAR/批量任务属 post-1.0）。
 
 ---
 
@@ -51,28 +51,21 @@
 
 ## Phase 2：公开年报导入（变更包 003，优先）
 
-- [ ] 详见 `openspec/changes/003-public-filing-import/tasks.md`
-- [ ] CAS 数字 PDF 主路径 + 人审入库
-- [ ] 港股/US GAAP 适配 + 难解析降级
+- [x] 详见 `openspec/changes/003-public-filing-import/tasks.md`（CAS 数字 PDF 主路径 + 人审入库已通）
+- [x] CAS 数字 PDF 主路径 + 人审入库
+- [ ] 港股/US GAAP 适配 + 难解析降级 → **post-1.0**（003 内部分任务仍 open）
 
-## Phase 3：财务比率分析与可视化（原 Phase 2）
+## Phase 3：财务比率分析与可视化（变更包 005）
 
-- [ ] core/constants.py 定义比率公式清单
-- [ ] services/ratio_service.py（pandas 计算）
-- [ ] api/ratios.py：按企业/报告期返回比率
-- [ ] 前端 AnalysisView：ECharts 图表 + 比率卡片
-- [ ] 测试
+- [x] 完成（见 `openspec/changes/005-ratio-analysis/tasks.md`）
 
-## Phase 4：多期对比与趋势分析
+## Phase 4：多期对比与趋势分析（变更包 006）
 
-- [ ] 查询接口支持多期数据组装（同比/环比）
-- [ ] 趋势折线图、变动额/变动率计算
-- [ ] 前端对比视图
-- [ ] 测试
+- [x] 完成（见 `openspec/changes/006-multi-period-compare/tasks.md`）
 
-## Phase 5：Excel 模板导入导出与报表打印
+## Phase 5：Excel 模板导入导出（变更包 007/008）+ 在线拉取（009）
 
-- [ ] 与 003 的 Excel 适配器对齐
-- [ ] 导出/打印
-- [ ] 前端上传/下载 UI
-- [ ] 测试
+- [x] Excel 导出含比率（007）
+- [x] Excel 模板导入（008）
+- [x] 年报在线拉取 URL+巨潮（009）
+- [ ] 批量多年任务、港股/EDGAR → **post-1.0**（见 `openspec/project.md`）

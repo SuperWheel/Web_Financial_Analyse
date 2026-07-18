@@ -243,17 +243,43 @@ multipart `file` + form `overwrite`（默认 true）。写入 L1 三表；同报
 
 ### `GET /api/imports/fetch/cninfo/securities`
 
-Query：`q`（证券代码或公司名称；全称会回退简称）。返回证券列表。
+Query：`q`（证券代码或公司名称；全称会回退简称）。返回证券列表（含 `industry`，东财 best-effort，可能为空）。
 
 ### `GET /api/imports/fetch/cninfo/search`
 
 Query：`year`，以及 `q` 或兼容参数 `code`（代码/名称）。  
 返回年报全文候选（排除摘要/英文等），含 `pdf_url`。
 
+### `POST /api/imports/fetch/cninfo/search-years`
+
+Body：`q`/`code` + `years`（1–12 个）。  
+统一多年检索：1 个年份=单年，多个=多年拼接候选列表（**不下载**）。供前端勾选后导入。
+
 ### `POST /api/imports/fetch/cninfo/download`
 
 Body：`pdf_url`、可选 `code`/`title`/`year`/`name`/`company_id`。  
 下载 PDF → 创建 import job（`source_type=pdf_cninfo`）。
+
+### `POST /api/imports/fetch/cninfo/batch`
+
+Body：
+```json
+{
+  "q": "603486",
+  "years": [2022, 2023, 2024],
+  "company_id": 1
+}
+```
+- `q` 或兼容 `code`：证券代码 / 公司名称（必填其一）。
+- `years`：1–12 个年份（1990–2100）；服务端去重升序。
+- 串行检索全文年报 → 下载首选候选 → 建 import job；**不自动 commit**。
+- 单年 `empty`/`error` 不中断整批。
+
+响应 200：`code`/`name`/`years_requested`/`summary{ok,empty,error}`/`results[]`  
+（`status`=`ok|empty|error`；成功含 `job_id`，可用 `GET /api/imports/filings/{id}` 打开核对）。
+
+- 缺 `q`/`code` 或 `years` 非法 → `422`
+- 证券未找到 / 年份超限（业务层）→ `400`
 
 ### `POST /api/imports/fetch/from-url`
 
@@ -262,4 +288,4 @@ Body：`url`、可选 `company_id`/`filename`。
 
 ---
 
-> 港股/美股拉取与批量任务后续再增强。
+> **Post-1.0 其余项**：港股/美股拉取解析等见 `openspec/project.md` backlog；当前主路径为 A 股 CAS。批量多年已由变更包 **010** 交付。

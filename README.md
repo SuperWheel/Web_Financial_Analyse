@@ -63,7 +63,8 @@
 ### 环境要求
 
 - **Python 3.10+**（推荐 3.12）
-- **Node.js 18+**（或 bun / pnpm）
+- **Node.js 18+**（`vue-tsc` 需要系统 `node`；仅装 Bun 不够。macOS 推荐：`brew install node@22 && brew link --force node@22`）
+  - 包管理可用 npm / bun / pnpm
 
 ### 一键启动 / 关闭（macOS）
 
@@ -127,34 +128,37 @@ npm run dev
 Web_Financial_Analyse/
 ├── README.md
 ├── AGENTS.md / CLAUDE.md      # 导航与协作约定
-├── openspec/                  # Spec 变更包（001–009）
+├── openspec/                  # Spec 变更包（001–010）
 ├── docs/
 │   ├── api.md
 │   ├── architecture.md
 │   ├── dev-log.md
+│   ├── plans/                 # 可执行修改计划
+│   ├── archive/               # 归档评价/纪要
 │   └── screenshots/           # README 截图
 ├── backend/
 │   └── app/{api,services,models,schemas,core}
 ├── frontend/
 │   └── src/{views,api,stores,utils,constants}
 ├── data/                      # 本地 SQLite / 导入文件（默认不入库）
-├── scripts/                   # start-dev / stop-dev
+├── scripts/                   # start-dev / stop-dev / check
 └── 启动|关闭财务分析系统.command
 ```
 
 ---
 
-## 测试
+## 测试与质量门禁
 
 ```bash
-# 后端
-cd backend && source .venv/bin/activate
-pytest -q
+# 推荐：仓库根一键（pytest → type-check → build）
+./scripts/check.sh
 
-# 前端
-cd frontend
-npm run type-check    # 或 bun run type-check
+# 或分步
+cd backend && source .venv/bin/activate && pytest -q
+cd frontend && npm run type-check && npm run build
 ```
+
+Post-1.0 可靠性计划见 [`docs/plans/2026-07-18-post1.0-reliability-plan.md`](./docs/plans/2026-07-18-post1.0-reliability-plan.md)。
 
 ---
 
@@ -173,8 +177,8 @@ npm run type-check    # 或 bun run type-check
 - **本地单机**，无多用户与权限
 - 比率与多期对比结果**不落库**，按公式/矩阵动态计算
 - 年报 PDF 样例目录 `年报参考/` 中的 PDF **默认不纳入 Git**（体积大）
-- 巨潮在线拉取请控制频率，遵守网站使用条款；当前主路径为 **A 股 CAS**
-- 港股 / EDGAR、批量任务等为后续增强项
+- 巨潮在线拉取请控制频率，遵守网站使用条款；当前主路径为 **A 股 CAS**；支持**批量多年**（≤12 年，人审入库）
+- 港股 / EDGAR 等为后续增强项
 
 ---
 

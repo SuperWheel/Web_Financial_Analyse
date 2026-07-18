@@ -4,11 +4,11 @@
 
 ## 一句话简介
 
-轻量级**企业财务报表分析系统**：录入三大报表、计算财务比率、多期对比，单机本地运行。
+轻量级**企业财务报表分析系统**：录入三大报表、公开年报导入、计算财务比率、多期对比，单机本地运行。
 
 ## 技术栈
 
-- **后端**：Python + FastAPI + SQLAlchemy + SQLite + pandas（见 `backend/requirements.txt`）
+- **后端**：Python + FastAPI + SQLAlchemy + SQLite + pandas + openpyxl / pdfplumber / httpx（见 `backend/requirements.txt`）
 - **前端**：Vue3 + TypeScript + Element Plus + ECharts + Vite（见 `frontend/package.json`）
 - **形态**：单机本地，无认证，SQLite 落地于 `data/finance.db`
 
@@ -18,7 +18,7 @@
 Web_Financial_Analyse/
 ├── AGENTS.md            ← 你在这里（导航地图）
 ├── openspec/            ← Spec 模式产物（架构变更在此发起）
-│   ├── project.md         项目背景与范围
+│   ├── project.md         项目背景与范围（含 post-1.0 backlog）
 │   ├── AGENTS.md          AI 协作约定（分层铁律、命名、自检清单）
 │   └── changes/           每个变更包一个目录（proposal/spec/design/tasks）
 ├── docs/                ← 开发文档
@@ -28,12 +28,12 @@ Web_Financial_Analyse/
 ├── backend/             ← FastAPI 后端
 │   └── app/
 │       ├── api/           路由层（只做转换/注入）
-│       ├── services/      业务层（规则/编排）
+│       ├── services/      业务层（规则/编排；importing/、fetching/）
 │       ├── models/        数据层（ORM）
 │       ├── schemas/       边界校验（Pydantic）
 │       └── core/          常量/公式/配置
 ├── frontend/            ← Vue3 前端
-│   └── src/{views,layouts,stores,api,router}
+│   └── src/{views,layouts,stores,api,router,utils,constants}
 └── data/                ← SQLite 数据文件落地处
 ```
 
@@ -46,13 +46,30 @@ Web_Financial_Analyse/
 
 ## 当前状态
 
-- ✅ Phase 0：项目框架已建立。
-- ✅ Phase 1：三大报表录入与存储（变更包 002）+ 会计表格式 UI。
-- ✅ Phase 2：公开年报导入（变更包 003：PDF 识别映射 + 人审入库；CAS 主路径已通）。
+**基线：v1.0.0 已发布**（git tag `v1.0.0`）。
+
+### v1.0 已交付
+
+- ✅ Phase 0：项目框架（变更包 001）。
+- ✅ Phase 1：三大报表录入与存储（002）+ 会计表格式 UI。
+- ✅ Phase 2：公开年报导入（003：PDF 识别映射 + 人审入库；CAS 主路径已通）。
 - ✅ 变更包 004：CAS-simplified-v2 标准科目扩列 + L0 披露明细层 + 别名/rollup。
-- ✅ Phase 3：财务比率分析与可视化（变更包 005）。
-- ✅ Phase 4：科目级多期对比（变更包 006）。
-- ✅ Phase 5：Excel 导出/导入（007/008）；年报在线拉取 URL+巨潮（009）。港股/EDGAR 与批量任务待增强。
+- ✅ Phase 3：财务比率分析与可视化（005）。
+- ✅ Phase 4：科目级多期对比（006）。
+- ✅ Phase 5：Excel 导出/导入（007/008）；年报在线拉取 URL+巨潮（009）。
+- ✅ 变更包 010：巨潮批量多年拉取（同步批 ≤12 年；单年失败不中断；不自动 commit）。
+
+### Post-1.0 backlog（推荐序）
+
+| 序 | 方向 | 建议模式 | 状态 |
+|----|------|----------|------|
+| 1 | 导入/分析体验修补（映射质量/unmapped ✅；金额可编辑、同比边角等） | Vibe / Plan | 进行中 |
+| 2 | 港股 GAAP 解析（`GaapHkPdfExtractor` 半成品） | Spec | 待做 |
+| 3 | EDGAR / US GAAP（独立解析器） | Spec | 待做 |
+
+工程可靠性计划：[[docs/plans/2026-07-18-post1.0-reliability-plan.md]]（A 交付门禁 → B CI → C 拆视图 → D 黄金样本）。
+
+本地一键检查：`./scripts/check.sh`（pytest + type-check + build）。
 
 ## 启动方式
 
@@ -68,19 +85,23 @@ npm install
 npm run dev                             # http://127.0.0.1:5173
 ```
 
+也可使用根目录 `启动财务分析系统.command` / `关闭财务分析系统.command`（macOS）。
+
 ## 关键参考（深入阅读入口）
 
+- 架构总览：[[docs/architecture.md]]
 - 架构与技术决策：[[openspec/changes/001-init-project/design.md]] / [[openspec/changes/002-statements-crud/design.md]]
 - 需求规格：[[openspec/changes/001-init-project/spec.md]]
 - 项目范围：[[openspec/project.md]]
 - 协作约定：[[openspec/AGENTS.md]]
+- API 摘要：[[docs/api.md]]
 - 开发规范总纲：[[AI Coding 开发规范参考文档.md]]
 
 ## 前端开发范式参照
 
-- 视图组件：`frontend/src/views/Dashboard.vue`、`StatementsView.vue`、`AnalysisView.vue`、`CompareView.vue`
+- 视图组件：`frontend/src/views/Dashboard.vue`、`StatementsView.vue`、`ImportView.vue`、`AnalysisView.vue`、`CompareView.vue`
 - 状态管理：`frontend/src/stores/{company,statement}.ts`
-- API 封装：`frontend/src/api/{http,company,statement,ratio,compare}.ts`
+- API 封装：`frontend/src/api/{http,company,statement,ratio,compare,export,excel,fetchFiling}.ts`
 - 科目元数据：`frontend/src/constants/statementFields.ts`
 - 路由：`frontend/src/router/index.ts`
 
@@ -89,5 +110,8 @@ npm run dev                             # http://127.0.0.1:5173
 - 企业切片：`api/companies.py` → `services/company_service.py` → `models/company.py` → `schemas/company.py`
 - 报表切片：`api/statements.py` → `services/statement_service.py` → `models/{balance_sheet,income_statement,cash_flow}.py` → `schemas/statement.py`
 - 比率/对比：`api/{ratios,compare}.py` → `services/{ratio,compare}_service.py` → `schemas/{ratio,compare}.py`（只读，不落库）
+- 导入：`api/imports.py` → `services/import_service.py` + `services/importing/*`
+- 在线拉取：`api/fetch.py` → `services/fetching/*`（下载后进入 import job）
+- Excel：`api/{export,excel_io}.py` → `services/{export,excel_import}_service.py`
 
 新增功能请按上述范式复刻分层。
