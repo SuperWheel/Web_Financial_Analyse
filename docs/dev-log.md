@@ -4,6 +4,19 @@
 
 ---
 
+## [2026-07-18] Phase B3/B5 + C2/C3 —— 门禁收尾与视图拆分完成
+
+**B3 ESLint**：`eslint.config.js` flat 最小规则；`npm run lint` 0 errors；CI/check 接入。  
+**B5 烟测**：`test_e2e_smoke.py` 企业→三表→比率→对比；pytest **61 passed**。  
+**C2 Compare**：1283→230；`useStatementCompare` + 4 组件。  
+**C3 Analysis**：2393→258；`useRatioAnalysis` + 6 组件；修 PeriodComparePanel 模板 TS。  
+
+**验证**：lint / type-check / vitest 9 / build 全绿；backend 61 passed。  
+
+**下一步**：Phase D（DB 备份 + PDF 黄金样本）。
+
+---
+
 ## [2026-07-18] Phase B4 —— 前端关键纯函数单测
 
 **需求简述**：为覆盖率聚合与同比上期定位加 Vitest，防回归。
