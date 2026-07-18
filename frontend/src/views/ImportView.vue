@@ -1,24 +1,16 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { Document, UploadFilled } from '@element-plus/icons-vue'
+import { Document } from '@element-plus/icons-vue'
 import { ElMessage, ElMessageBox, type TableInstance, type UploadRequestOptions } from 'element-plus'
 import { storeToRefs } from 'pinia'
 import {
   type ImportJob,
-  type UnmappedRow,
   commitImportJob,
   fetchImportJob,
   updateImportJob,
   uploadFiling,
 } from '@/api/importFiling'
-import {
-  commitExcelImport,
-  downloadExcelTemplate,
-  previewExcelImport,
-  type ExcelImportPreview,
-  type ExcelImportResult,
-} from '@/api/excel'
 import {
   downloadCninfoFiling,
   fetchFromUrl,
@@ -30,7 +22,15 @@ import {
 } from '@/api/fetchFiling'
 import { STATEMENT_META, type StatementKind } from '@/constants/statementFields'
 import { useCompanyStore } from '@/stores/company'
-import type { PeriodType } from '@/api/compare'
+import MappingQualityPanel from '@/components/import/MappingQualityPanel.vue'
+import ReviewQueueNav from '@/components/import/ReviewQueueNav.vue'
+import ExcelImportPanel from '@/components/import/ExcelImportPanel.vue'
+import {
+  STATEMENT_KINDS,
+  STATEMENT_KIND_LABEL,
+  formatMoney,
+  overallCoveragePct as calcOverallCoveragePct,
+} from '@/utils/importCoverage'
 
 const router = useRouter()
 const companyStore = useCompanyStore()
@@ -48,12 +48,8 @@ const job = ref<ImportJob | null>(null)
 const reviewJobs = ref<ImportJob[]>([])
 const reviewIndex = ref(0)
 
-const kinds: StatementKind[] = ['balance', 'income', 'cashflow']
-const kindLabel: Record<StatementKind, string> = {
-  balance: '资产负债表',
-  income: '利润表',
-  cashflow: '现金流量表',
-}
+const kinds = STATEMENT_KINDS
+const kindLabel = STATEMENT_KIND_LABEL
 
 const statements = computed(() => job.value?.draft?.statements || {})
 const fillModeText = computed(() => {
@@ -75,108 +71,7 @@ const reviewPendingCount = computed(
     ).length
 )
 
-const UNMAPPED_REASON_LABEL: Record<string, string> = {
-  no_alias_match: '无别名匹配',
-  low_score: '匹配分过低',
-  ambiguous: '多科目歧义',
-  skip_total_cost: '跳过营业总成本',
-}
-
-type CoverageRow = {
-  kind: StatementKind
-  label: string
-  coreHit: number
-  coreTotal: number
-  mappedFields: number
-  /** 0–100 */
-  pct: number
-}
-
-const coverageRows = computed((): CoverageRow[] => {
-  const cov = job.value?.coverage || {}
-  return kinds.map((kind) => {
-    const c = cov[kind] || {}
-    const coreTotal = Number(c.core_total ?? 0)
-    const coreHit = Number(c.core_hit ?? 0)
-    const mappedFields = Number(c.mapped_fields ?? 0)
-    const rate = typeof c.coverage === 'number' ? c.coverage : coreTotal ? coreHit / coreTotal : 0
-    return {
-      kind,
-      label: kindLabel[kind],
-      coreHit,
-      coreTotal,
-      mappedFields,
-      pct: Math.round(Math.max(0, Math.min(1, rate)) * 100),
-    }
-  })
-})
-
-const overallCoveragePct = computed(() => {
-  const rows = coverageRows.value
-  const total = rows.reduce((s, r) => s + r.coreTotal, 0)
-  if (!total) return null
-  const hit = rows.reduce((s, r) => s + r.coreHit, 0)
-  return Math.round((hit / total) * 100)
-})
-
-const issueList = computed(() => {
-  const list = job.value?.issues
-  return Array.isArray(list) ? list.map(String).filter(Boolean) : []
-})
-
-const unmappedRows = computed((): UnmappedRow[] => {
-  const list = job.value?.unmapped
-  return Array.isArray(list) ? list : []
-})
-
-const unmappedFilterKind = ref<'all' | StatementKind>('all')
-
-const filteredUnmapped = computed(() => {
-  const rows = unmappedRows.value
-  if (unmappedFilterKind.value === 'all') return rows
-  return rows.filter((r) => r.statement === unmappedFilterKind.value)
-})
-
-const unmappedCountByKind = computed(() => {
-  const counts: Record<string, number> = { all: unmappedRows.value.length }
-  for (const k of kinds) counts[k] = 0
-  for (const r of unmappedRows.value) {
-    const s = r.statement || ''
-    if (s in counts) counts[s] += 1
-  }
-  return counts
-})
-
-function coverageTagType(pct: number): 'success' | 'warning' | 'danger' | 'info' {
-  if (pct >= 80) return 'success'
-  if (pct >= 50) return 'warning'
-  if (pct > 0) return 'danger'
-  return 'info'
-}
-
-function reasonLabel(reason?: string): string {
-  if (!reason) return '—'
-  return UNMAPPED_REASON_LABEL[reason] || reason
-}
-
-function statementLabel(kind?: string): string {
-  if (!kind) return '—'
-  if (kind in kindLabel) return kindLabel[kind as StatementKind]
-  return kind
-}
-
-function formatMoney(v: unknown): string {
-  if (v === null || v === undefined || v === '') return '—'
-  const n = Number(v)
-  if (Number.isNaN(n)) return '—'
-  return n.toLocaleString('zh-CN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-}
-
-/** Excel 预览：期间标签列表（避免模板内 TS 注解） */
-function formatPeriodLabels(periods: { label?: string }[] | null | undefined): string {
-  if (!periods?.length) return '—'
-  return periods.map((p) => p.label || '—').join('、')
-}
+const overallCoveragePct = computed(() => calcOverallCoveragePct(job.value?.coverage))
 
 function fieldLabel(kind: StatementKind, key: string): string {
   for (const g of STATEMENT_META[kind].groups) {
@@ -355,82 +250,6 @@ function goStatements() {
   router.push('/statements')
 }
 
-// ---- Excel 模板 ----
-const excelCompanyId = ref<number | null>(null)
-const excelPeriodType = ref<PeriodType>('annual')
-const templateYears = ref<string>(`${new Date().getFullYear() - 2},${new Date().getFullYear() - 1},${new Date().getFullYear()}`)
-const excelFile = ref<File | null>(null)
-const excelPreview = ref<ExcelImportPreview | null>(null)
-const excelResult = ref<ExcelImportResult | null>(null)
-const excelLoading = ref(false)
-const excelOverwrite = ref(true)
-
-async function onDownloadTemplate() {
-  excelLoading.value = true
-  try {
-    const years = templateYears.value
-      .split(',')
-      .map((s) => s.trim())
-      .filter(Boolean)
-      .map((s) => Number(s))
-      .filter((n) => !Number.isNaN(n))
-    await downloadExcelTemplate({
-      period_type: excelPeriodType.value,
-      years: years.length ? years : undefined,
-    })
-    ElMessage.success('模板已下载')
-  } catch {
-    // interceptor
-  } finally {
-    excelLoading.value = false
-  }
-}
-
-async function onExcelFile(opt: UploadRequestOptions) {
-  if (excelCompanyId.value == null) {
-    ElMessage.warning('请先选择企业')
-    opt.onError?.(new Error('no company') as never)
-    return
-  }
-  excelLoading.value = true
-  excelResult.value = null
-  try {
-    const file = opt.file as File
-    excelFile.value = file
-    excelPreview.value = await previewExcelImport(excelCompanyId.value, file)
-    ElMessage.success('解析完成，请确认预览后入库')
-    opt.onSuccess?.(excelPreview.value)
-  } catch (e) {
-    excelPreview.value = null
-    excelFile.value = null
-    opt.onError?.(e as Parameters<NonNullable<UploadRequestOptions['onError']>>[0])
-  } finally {
-    excelLoading.value = false
-  }
-}
-
-async function onExcelCommit() {
-  if (excelCompanyId.value == null || !excelFile.value) {
-    ElMessage.warning('请先选择企业并上传文件')
-    return
-  }
-  excelLoading.value = true
-  try {
-    excelResult.value = await commitExcelImport(
-      excelCompanyId.value,
-      excelFile.value,
-      excelOverwrite.value
-    )
-    ElMessage.success(
-      `入库完成：新建 ${excelResult.value.created.length}，更新 ${excelResult.value.updated.length}`
-    )
-  } catch {
-    // interceptor
-  } finally {
-    excelLoading.value = false
-  }
-}
-
 // ---- 在线拉取（URL + 巨潮）----
 const fetchCompanyId = ref<number | null>(null)
 const fetchQuery = ref('')
@@ -544,7 +363,6 @@ async function selectReviewIndex(i: number) {
   }
   reviewIndex.value = i
   job.value = reviewJobs.value[i]
-  unmappedFilterKind.value = 'all'
 }
 
 async function goPrevReview() {
@@ -846,7 +664,7 @@ onMounted(async () => {
             title="年份填一个=单年，填 2022-2024 或 2022,2023,2024=多年。检索后勾选年报再导入；可新建关联企业（自动带代码/行业）。不自动入库。"
           />
 
-          <el-form label-width="100px" class="excel-form">
+          <el-form label-width="100px" class="meta-form">
             <el-form-item label="关联企业">
               <div class="fetch-row">
                 <el-select
@@ -1052,135 +870,9 @@ onMounted(async () => {
         </div>
       </el-tab-pane>
       <el-tab-pane label="Excel 模板导入" name="excel">
-        <div class="panel" v-loading="excelLoading">
-          <el-alert
-            type="info"
-            :closable="false"
-            show-icon
-            title="下载模板 → 填写三表金额 → 上传预览 → 确认入库。财务比率 sheet 会被忽略（入库后动态计算）。"
-            style="margin-bottom: 16px"
-          />
-
-          <el-form label-width="100px" class="excel-form">
-            <el-form-item label="目标企业">
-              <el-select
-                v-model="excelCompanyId"
-                filterable
-                placeholder="选择企业"
-                style="width: 280px"
-              >
-                <el-option
-                  v-for="c in companies"
-                  :key="c.id"
-                  :label="c.name"
-                  :value="c.id"
-                />
-              </el-select>
-            </el-form-item>
-            <el-form-item label="模板期间">
-              <el-radio-group v-model="excelPeriodType">
-                <el-radio-button value="annual">年报</el-radio-button>
-                <el-radio-button value="quarterly">季报</el-radio-button>
-              </el-radio-group>
-              <el-input
-                v-model="templateYears"
-                placeholder="年份，逗号分隔"
-                style="width: 220px; margin-left: 12px"
-              />
-              <el-button
-                type="primary"
-                plain
-                style="margin-left: 12px"
-                @click="onDownloadTemplate"
-              >
-                下载空模板
-              </el-button>
-            </el-form-item>
-            <el-form-item label="覆盖已有">
-              <el-switch v-model="excelOverwrite" active-text="是" inactive-text="否" />
-            </el-form-item>
-          </el-form>
-
-          <el-upload
-            drag
-            :http-request="onExcelFile"
-            :show-file-list="false"
-            accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-          >
-            <div class="upload-inner">
-              <el-icon :size="48" color="#409eff"><UploadFilled /></el-icon>
-              <div class="tip">拖拽或点击上传已填好的 .xlsx</div>
-              <div class="sub">也可上传本系统「导出 Excel」生成的文件（比率 sheet 自动忽略）</div>
-            </div>
-          </el-upload>
-
-          <div v-if="excelPreview" class="preview-block">
-            <h3>预览</h3>
-            <p>
-              期间类型：{{ excelPreview.period_type || '—' }} · 将新建
-              {{ excelPreview.will_create.length }} · 将更新
-              {{ excelPreview.will_update.length }} · 空表跳过
-              {{ excelPreview.will_skip_empty.length }}
-            </p>
-            <el-table :data="excelPreview.sheets" size="small" border style="margin-bottom: 12px">
-              <el-table-column prop="label" label="报表" width="140" />
-              <el-table-column prop="rows_with_code" label="科目行" width="90" />
-              <el-table-column prop="non_null_fields" label="非空单元格" width="110" />
-              <el-table-column label="期间">
-                <template #default="{ row }">
-                  {{ formatPeriodLabels(row.periods) }}
-                </template>
-              </el-table-column>
-            </el-table>
-
-            <el-collapse v-if="excelPreview.will_create.length || excelPreview.will_update.length">
-              <el-collapse-item title="将写入的期间明细" name="1">
-                <p v-if="excelPreview.will_create.length">
-                  <strong>新建：</strong>{{ excelPreview.will_create.join('；') }}
-                </p>
-                <p v-if="excelPreview.will_update.length">
-                  <strong>更新：</strong>{{ excelPreview.will_update.join('；') }}
-                </p>
-              </el-collapse-item>
-            </el-collapse>
-
-            <el-alert
-              v-for="(w, i) in excelPreview.warnings.slice(0, 8)"
-              :key="i"
-              type="warning"
-              :title="w"
-              :closable="false"
-              show-icon
-              style="margin-top: 6px"
-            />
-            <p v-if="excelPreview.warnings.length > 8" class="sub">
-              另有 {{ excelPreview.warnings.length - 8 }} 条警告…
-            </p>
-
-            <div class="actions">
-              <el-button type="primary" :disabled="!excelFile" @click="onExcelCommit">
-                确认入库
-              </el-button>
-              <el-button @click="goStatements">查看三大报表</el-button>
-            </div>
-          </div>
-
-          <div v-if="excelResult" class="preview-block">
-            <h3>入库结果</h3>
-            <el-descriptions :column="1" border size="small">
-              <el-descriptions-item label="新建">
-                {{ excelResult.created.length }}：{{ excelResult.created.join('；') || '—' }}
-              </el-descriptions-item>
-              <el-descriptions-item label="更新">
-                {{ excelResult.updated.length }}：{{ excelResult.updated.join('；') || '—' }}
-              </el-descriptions-item>
-              <el-descriptions-item label="跳过">
-                {{ excelResult.skipped.length }}：{{ excelResult.skipped.join('；') || '—' }}
-              </el-descriptions-item>
-            </el-descriptions>
-          </div>
-        </div>
+        <ExcelImportPanel :companies="companies" @go-statements="goStatements" />
       </el-tab-pane>
+
 
       <el-tab-pane label="年报 PDF 导入" name="pdf">
         <el-steps :active="step" align-center finish-status="success" style="margin-bottom: 20px">
@@ -1205,38 +897,16 @@ onMounted(async () => {
         </div>
 
         <div v-else-if="step >= 1 && job" class="panel" v-loading="loading || batchCommitting">
-          <div v-if="reviewJobs.length" class="review-nav">
-            <el-button :disabled="reviewIndex <= 0" @click="goPrevReview">上一份</el-button>
-            <div class="review-nav-center">
-              <strong>
-                {{ reviewIndex + 1 }} / {{ reviewTotal }}
-                <template v-if="job.report_year"> · {{ job.report_year }} 年报</template>
-              </strong>
-              <div class="sub">
-                已入库 {{ reviewCommittedCount }} · 待确认 {{ reviewPendingCount }}
-                <template v-if="job.original_filename"> · {{ job.original_filename }}</template>
-              </div>
-              <div class="review-chips">
-                <el-check-tag
-                  v-for="(rj, i) in reviewJobs"
-                  :key="rj.id"
-                  :checked="i === reviewIndex"
-                  class="review-chip"
-                  @change="selectReviewIndex(i)"
-                >
-                  {{ rj.report_year || `#${rj.id}` }}
-                  <span v-if="rj.status === 'committed'">✓</span>
-                  <span v-else-if="rj.status === 'failed'">!</span>
-                </el-check-tag>
-              </div>
-            </div>
-            <el-button
-              :disabled="reviewIndex >= reviewJobs.length - 1"
-              @click="goNextReview"
-            >
-              下一份
-            </el-button>
-          </div>
+          <ReviewQueueNav
+            :jobs="reviewJobs"
+            :index="reviewIndex"
+            :current="job"
+            :committed-count="reviewCommittedCount"
+            :pending-count="reviewPendingCount"
+            @prev="goPrevReview"
+            @next="goNextReview"
+            @select="selectReviewIndex"
+          />
           <el-alert
             :title="`状态：${job.status} · ${fillModeText}${
               overallCoveragePct !== null ? ` · 覆盖 ${overallCoveragePct}%` : ''
@@ -1291,111 +961,7 @@ onMounted(async () => {
             </el-form-item>
           </el-form>
 
-          <div class="review-quality">
-            <div class="review-quality-head">
-              <h4>映射质量</h4>
-              <el-tag
-                v-if="overallCoveragePct !== null"
-                :type="coverageTagType(overallCoveragePct)"
-                effect="dark"
-              >
-                核心科目覆盖 {{ overallCoveragePct }}%
-              </el-tag>
-              <el-tag v-if="job.confidence != null" type="info" effect="plain">
-                置信度 {{ (Number(job.confidence) * 100).toFixed(0) }}%
-              </el-tag>
-              <el-tag v-if="unmappedRows.length" type="warning" effect="plain">
-                未映射 {{ unmappedRows.length }}
-              </el-tag>
-              <el-tag v-if="issueList.length" type="danger" effect="plain">
-                问题 {{ issueList.length }}
-              </el-tag>
-            </div>
-
-            <el-table :data="coverageRows" size="small" border class="coverage-table">
-              <el-table-column prop="label" label="报表" min-width="120" />
-              <el-table-column label="核心科目" width="110" align="center">
-                <template #default="{ row }">
-                  {{ row.coreHit }} / {{ row.coreTotal || '—' }}
-                </template>
-              </el-table-column>
-              <el-table-column label="已映射字段" prop="mappedFields" width="100" align="center" />
-              <el-table-column label="覆盖率" min-width="180">
-                <template #default="{ row }">
-                  <div class="cov-bar-wrap">
-                    <el-progress
-                      :percentage="row.pct"
-                      :stroke-width="12"
-                      :status="
-                        row.pct >= 80 ? 'success' : row.pct >= 50 ? 'warning' : row.coreTotal ? 'exception' : undefined
-                      "
-                      :text-inside="true"
-                    />
-                  </div>
-                </template>
-              </el-table-column>
-            </el-table>
-
-            <el-alert
-              v-for="(iss, i) in issueList.slice(0, 12)"
-              :key="'iss-' + i"
-              type="warning"
-              :title="iss"
-              show-icon
-              :closable="false"
-              class="issue-alert"
-            />
-            <p v-if="issueList.length > 12" class="sub">另有 {{ issueList.length - 12 }} 条问题…</p>
-
-            <div v-if="unmappedRows.length" class="unmapped-block">
-              <div class="unmapped-head">
-                <h4>未映射科目（{{ unmappedRows.length }}）</h4>
-                <el-radio-group v-model="unmappedFilterKind" size="small">
-                  <el-radio-button value="all">
-                    全部 {{ unmappedCountByKind.all }}
-                  </el-radio-button>
-                  <el-radio-button
-                    v-for="k in kinds"
-                    :key="k"
-                    :value="k"
-                    :disabled="!unmappedCountByKind[k]"
-                  >
-                    {{ kindLabel[k] }} {{ unmappedCountByKind[k] || 0 }}
-                  </el-radio-button>
-                </el-radio-group>
-              </div>
-              <p class="sub unmapped-hint">
-                未映射行不会写入标准科目；可核对金额是否已由其他科目覆盖，或入库后在报表页手工补录。
-              </p>
-              <el-table
-                :data="filteredUnmapped"
-                size="small"
-                border
-                max-height="280"
-                empty-text="该表无未映射行"
-              >
-                <el-table-column label="报表" width="110">
-                  <template #default="{ row }">{{ statementLabel(row.statement) }}</template>
-                </el-table-column>
-                <el-table-column prop="label" label="原文科目" min-width="180" show-overflow-tooltip />
-                <el-table-column label="金额" width="140" align="right">
-                  <template #default="{ row }">{{ formatMoney(row.amount) }}</template>
-                </el-table-column>
-                <el-table-column label="页" prop="page" width="64" align="center" />
-                <el-table-column label="原因" width="120">
-                  <template #default="{ row }">
-                    <el-tag size="small" type="info" effect="plain">{{ reasonLabel(row.reason) }}</el-tag>
-                  </template>
-                </el-table-column>
-              </el-table>
-            </div>
-            <el-empty
-              v-else-if="job.status !== 'failed'"
-              description="无未映射科目"
-              :image-size="56"
-              class="unmapped-empty"
-            />
-          </div>
+          <MappingQualityPanel :job="job" />
 
           <div v-for="k in kinds" :key="k" class="issues">
             <h4>{{ kindLabel[k] }}</h4>
@@ -1481,91 +1047,8 @@ onMounted(async () => {
 .meta-form {
   margin-bottom: 8px;
 }
-.excel-form {
-  margin-bottom: 8px;
-}
 .issues {
   margin-bottom: 12px;
-}
-.preview-block {
-  margin-top: 20px;
-}
-.preview-block h3 {
-  margin: 0 0 8px;
-  font-size: 16px;
-}
-.review-nav {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding: 12px;
-  border: 1px solid var(--el-border-color-lighter);
-  border-radius: 8px;
-  background: #fafcff;
-}
-.review-nav-center {
-  flex: 1;
-  text-align: center;
-}
-.review-chips {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 8px;
-}
-.review-chip {
-  cursor: pointer;
-}
-.review-quality {
-  margin: 8px 0 16px;
-  padding: 12px;
-  border: 1px solid var(--el-border-color-lighter);
-  border-radius: 8px;
-  background: var(--el-fill-color-blank);
-}
-.review-quality-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-.review-quality-head h4 {
-  margin: 0;
-  font-size: 14px;
-  margin-right: 4px;
-}
-.coverage-table {
-  margin-bottom: 10px;
-}
-.cov-bar-wrap {
-  padding-right: 4px;
-}
-.issue-alert {
-  margin-bottom: 6px;
-}
-.unmapped-block {
-  margin-top: 10px;
-}
-.unmapped-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 4px;
-}
-.unmapped-head h4 {
-  margin: 0;
-  font-size: 14px;
-}
-.unmapped-hint {
-  margin: 0 0 8px;
-}
-.unmapped-empty {
-  padding: 8px 0 0;
 }
 .actions {
   margin-top: 16px;

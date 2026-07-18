@@ -4,6 +4,23 @@
 
 ---
 
+## [2026-07-18] Phase C1 —— 拆分 ImportView
+
+**需求简述**：降低 ImportView 体积，抽出边界清晰的展示/子域组件，行为不变。
+
+**实现**：
+- `utils/importCoverage.ts`：覆盖率/金额/原因纯函数
+- `components/import/MappingQualityPanel.vue`：映射质量 + unmapped
+- `components/import/ReviewQueueNav.vue`：多年核对队列导航
+- `components/import/ExcelImportPanel.vue`：Excel 模板导入整 tab
+- `ImportView.vue`：~1600 → ~1087 行，编排 fetch/PDF 主流程
+
+**验证**：`npm run type-check` / `build` 通过。
+
+**下一步**：可选再抽 CninfoSearchPanel / useImportReviewQueue；或 B3/B4。
+
+---
+
 ## [2026-07-18] Phase B2 —— 后端 Ruff 最小门禁
 
 **需求简述**：CI/本地增加后端静态检查，只拦明显错误，不全仓格式化。
