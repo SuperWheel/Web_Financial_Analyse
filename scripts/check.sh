@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 本地质量门禁：backend ruff → pytest → frontend type-check → test → build
+# 本地质量门禁：backend ruff → pytest → frontend lint → type-check → test → build
 # 用法：在仓库根执行  ./scripts/check.sh
 set -euo pipefail
 
@@ -53,7 +53,7 @@ run_frontend() {
   fi
 }
 
-info "1/5 backend ruff"
+info "1/6 backend ruff"
 PY="$(resolve_python)"
 info "python: $PY"
 (
@@ -67,21 +67,24 @@ info "python: $PY"
   fi
 )
 
-info "2/5 backend pytest"
+info "2/6 backend pytest"
 (
   cd "$BACKEND_DIR"
   "$PY" -m pytest -q
 )
 
-info "3/5 frontend type-check"
+info "3/6 frontend lint"
 ensure_node
 info "node: $(command -v node) ($(node -v))"
+run_frontend lint
+
+info "4/6 frontend type-check"
 run_frontend type-check
 
-info "4/5 frontend unit tests"
+info "5/6 frontend unit tests"
 run_frontend test
 
-info "5/5 frontend build"
+info "6/6 frontend build"
 run_frontend build
 
 info "全部通过 ✓"

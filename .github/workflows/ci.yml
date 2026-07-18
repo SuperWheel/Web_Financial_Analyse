@@ -1,4 +1,4 @@
-# 与 scripts/check.sh 对齐：backend ruff+pytest + frontend type-check/test/build
+# backend ruff+pytest ∥ frontend lint+type-check+test+build
 name: CI
 
 on:
@@ -42,7 +42,7 @@ jobs:
         run: python -m pytest -q
 
   frontend:
-    name: frontend (type-check + test + build)
+    name: frontend (lint + type-check + test + build)
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -60,6 +60,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: ESLint
+        run: npm run lint
 
       - name: Type-check
         run: npm run type-check
