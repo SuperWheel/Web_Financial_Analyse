@@ -4,6 +4,21 @@
 
 ---
 
+## [2026-07-18] Phase C1b —— 抽出 CninfoSearchPanel
+
+**需求简述**：继续拆 ImportView，在线拉取 tab 整段下沉。
+
+**实现**：
+- `components/import/CninfoSearchPanel.vue`：巨潮检索/勾选导入/PDF 直链/新建企业
+- 与父通信：`v-model:company-id` + `@review-jobs` → `enterReviewQueue`
+- `ImportView.vue`：~1086 → ~522 行
+
+**验证**：type-check + build 通过。
+
+**下一步**：可选 StatementDraftTables / useImportReviewQueue；或 B4 单测。
+
+---
+
 ## [2026-07-18] Phase C1 —— 拆分 ImportView
 
 **需求简述**：降低 ImportView 体积，抽出边界清晰的展示/子域组件，行为不变。
