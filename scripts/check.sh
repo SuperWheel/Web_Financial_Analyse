@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 本地质量门禁：backend ruff → pytest → frontend type-check → build
+# 本地质量门禁：backend ruff → pytest → frontend type-check → test → build
 # 用法：在仓库根执行  ./scripts/check.sh
 set -euo pipefail
 
@@ -10,7 +10,6 @@ FRONTEND_DIR="$ROOT_DIR/frontend"
 info() { printf "\033[1;34m[check]\033[0m %s\n" "$1"; }
 fail() { printf "\033[1;31m[check]\033[0m %s\n" "$1" >&2; exit 1; }
 
-# Prefer project venv, then PATH python
 resolve_python() {
   if [[ -x "$BACKEND_DIR/.venv/bin/python" ]]; then
     echo "$BACKEND_DIR/.venv/bin/python"
@@ -27,7 +26,6 @@ resolve_python() {
   fail "未找到 Python（期望 backend/.venv 或 python3）"
 }
 
-# Ensure node is available for vue-tsc shebang (bun alone is not enough)
 ensure_node() {
   if command -v node >/dev/null 2>&1; then
     return
@@ -55,7 +53,7 @@ run_frontend() {
   fi
 }
 
-info "1/4 backend ruff"
+info "1/5 backend ruff"
 PY="$(resolve_python)"
 info "python: $PY"
 (
@@ -69,18 +67,21 @@ info "python: $PY"
   fi
 )
 
-info "2/4 backend pytest"
+info "2/5 backend pytest"
 (
   cd "$BACKEND_DIR"
   "$PY" -m pytest -q
 )
 
-info "3/4 frontend type-check"
+info "3/5 frontend type-check"
 ensure_node
 info "node: $(command -v node) ($(node -v))"
 run_frontend type-check
 
-info "4/4 frontend build"
+info "4/5 frontend unit tests"
+run_frontend test
+
+info "5/5 frontend build"
 run_frontend build
 
 info "全部通过 ✓"

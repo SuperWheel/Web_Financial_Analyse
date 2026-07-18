@@ -4,6 +4,21 @@
 
 ---
 
+## [2026-07-18] Phase B4 —— 前端关键纯函数单测
+
+**需求简述**：为覆盖率聚合与同比上期定位加 Vitest，防回归。
+
+**实现**：
+- 引入 `vitest@2.1.9`；`npm test` / `test:watch`
+- `importCoverage.spec.ts`（5）+ `ratioInsights.spec.ts`（4）= **9 passed**
+- CI frontend job 与 `scripts/check.sh` 增加 unit tests 步骤
+
+**验证**：`npm test` 9 passed。
+
+**下一步**：B3 ESLint（可选）或 D 黄金样本 / C2 Compare。
+
+---
+
 ## [2026-07-18] Phase C1c —— StatementDraftTables + useImportReviewQueue
 
 **需求简述**：收尾 ImportView 拆分：三表 draft 展示 + 核对队列 composable。
