@@ -4,6 +4,23 @@
 
 ---
 
+## [2026-07-18] Phase B2 —— 后端 Ruff 最小门禁
+
+**需求简述**：CI/本地增加后端静态检查，只拦明显错误，不全仓格式化。
+
+**实现**：
+- `backend/ruff.toml`：E+F，忽略 E501
+- `requirements-dev.txt` 固定 `ruff==0.15.22`
+- 修 F401/F841：`ratio_service` 未用模型导入、`http_util` 未用变量
+- `scripts/check.sh`：1/4 ruff → pytest → type-check → build
+- CI backend job：Install 后 `ruff check app tests` 再 pytest
+
+**验证**：`ruff check app tests` OK；`pytest` 60 passed。
+
+**下一步**：push 确认 Actions 绿；B3 ESLint 或 C1 拆 ImportView。
+
+---
+
 ## [2026-07-18] Phase B1 —— GitHub Actions CI
 
 **需求简述**：把本地 `scripts/check.sh` 接到远程自动门禁。

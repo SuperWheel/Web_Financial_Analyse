@@ -1,0 +1,14 @@
+# 最小静态检查：只拦明显错误（未用导入/变量等），不强制格式化全仓。
+# 用法（在 backend/ 下）：ruff check app tests
+target-version = "py310"
+line-length = 100
+src = ["app", "tests"]
+
+[lint]
+# E/F 中暂忽略 E501（行宽），避免一次性改动爆炸；其余 E + 全 F 开启。
+select = ["E", "F"]
+ignore = ["E501"]
+
+[lint.per-file-ignores]
+# 测试里常见的 fixture 导入保留空间
+"tests/*" = []

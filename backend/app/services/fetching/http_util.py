@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import time
-from typing import Final
 from urllib.parse import urlparse
 
 import httpx
@@ -99,6 +98,5 @@ def download_pdf_bytes(
     # PDF magic
     head = content[:5]
     if head != b"%PDF-" and b"%PDF" not in content[:1024]:
-        ctype = ""
         raise FetchError("下载内容不是 PDF（缺少 %PDF 头）")
     return content, name

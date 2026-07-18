@@ -7,9 +7,6 @@ from typing import Any
 from sqlalchemy.orm import Session
 
 from app.core.constants import PERIOD_ANNUAL, RATIO_DEFINITIONS
-from app.models.balance_sheet import BalanceSheet
-from app.models.cash_flow import CashFlowStatement
-from app.models.income_statement import IncomeStatement
 from app.services.company_service import get_company
 from app.services.statement_service import (
     list_balance_sheets,

@@ -150,15 +150,17 @@ Web_Financial_Analyse/
 ## 测试与质量门禁
 
 ```bash
-# 推荐：仓库根一键（pytest → type-check → build）
+# 推荐：仓库根一键（ruff → pytest → type-check → build）
 ./scripts/check.sh
 
 # 或分步
-cd backend && source .venv/bin/activate && pytest -q
-cd frontend && npm run type-check && npm run build
+cd backend && source .venv/bin/activate
+ruff check app tests          # 需 pip install -r requirements-dev.txt
+pytest -q
+cd ../frontend && npm run type-check && npm run build
 ```
 
-GitHub Actions（`.github/workflows/ci.yml`）在 `push` / `pull_request` → `main` 时自动跑同一套检查（backend pytest ∥ frontend type-check + build）。
+GitHub Actions（`.github/workflows/ci.yml`）在 `push` / `pull_request` → `main` 时自动跑：backend **ruff + pytest** ∥ frontend type-check + build。
 
 Post-1.0 可靠性计划见 [`docs/plans/2026-07-18-post1.0-reliability-plan.md`](./docs/plans/2026-07-18-post1.0-reliability-plan.md)。
 

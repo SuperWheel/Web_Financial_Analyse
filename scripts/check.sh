@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 本地质量门禁：后端 pytest → 前端 type-check → 前端 production build
+# 本地质量门禁：backend ruff → pytest → frontend type-check → build
 # 用法：在仓库根执行  ./scripts/check.sh
 set -euo pipefail
 
@@ -32,7 +32,6 @@ ensure_node() {
   if command -v node >/dev/null 2>&1; then
     return
   fi
-  # Common Homebrew keg-only path
   if [[ -x /opt/homebrew/opt/node@22/bin/node ]]; then
     export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
     return
@@ -44,38 +43,44 @@ ensure_node() {
   fail "未找到 node。请安装 Node.js 18+（推荐: brew install node@22 && brew link node@22）"
 }
 
-info "1/3 backend pytest"
+run_frontend() {
+  local script="$1"
+  cd "$FRONTEND_DIR"
+  if command -v bun >/dev/null 2>&1 && [[ -f bun.lockb || -f bun.lock ]]; then
+    bun run "$script"
+  elif command -v npm >/dev/null 2>&1; then
+    npm run "$script"
+  else
+    fail "未找到 bun 或 npm"
+  fi
+}
+
+info "1/4 backend ruff"
 PY="$(resolve_python)"
 info "python: $PY"
+(
+  cd "$BACKEND_DIR"
+  if [[ -x "$BACKEND_DIR/.venv/bin/ruff" ]]; then
+    "$BACKEND_DIR/.venv/bin/ruff" check app tests
+  elif command -v ruff >/dev/null 2>&1; then
+    ruff check app tests
+  else
+    fail "未找到 ruff。请: cd backend && .venv/bin/pip install -r requirements-dev.txt"
+  fi
+)
+
+info "2/4 backend pytest"
 (
   cd "$BACKEND_DIR"
   "$PY" -m pytest -q
 )
 
-info "2/3 frontend type-check"
+info "3/4 frontend type-check"
 ensure_node
 info "node: $(command -v node) ($(node -v))"
-(
-  cd "$FRONTEND_DIR"
-  if command -v bun >/dev/null 2>&1 && [[ -f bun.lockb || -f bun.lock ]]; then
-    bun run type-check
-  elif command -v npm >/dev/null 2>&1; then
-    npm run type-check
-  else
-    fail "未找到 bun 或 npm"
-  fi
-)
+run_frontend type-check
 
-info "3/3 frontend build"
-(
-  cd "$FRONTEND_DIR"
-  if command -v bun >/dev/null 2>&1 && [[ -f bun.lockb || -f bun.lock ]]; then
-    bun run build
-  elif command -v npm >/dev/null 2>&1; then
-    npm run build
-  else
-    fail "未找到 bun 或 npm"
-  fi
-)
+info "4/4 frontend build"
+run_frontend build
 
 info "全部通过 ✓"
