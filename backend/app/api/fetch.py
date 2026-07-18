@@ -6,7 +6,10 @@ from sqlalchemy.orm import Session
 
 from app.api.deps import get_session
 from app.schemas.fetch import (
+    CninfoBatchRequest,
+    CninfoBatchResponse,
     CninfoDownloadRequest,
+    CninfoMultiSearchRequest,
     FetchFromUrlRequest,
     FilingCandidate,
     StockSecurity,
@@ -62,6 +65,21 @@ def cninfo_search(
     return [FilingCandidate.model_validate(r) for r in rows]
 
 
+@router.post("/cninfo/search-years", response_model=list[FilingCandidate])
+def cninfo_search_years(payload: CninfoMultiSearchRequest) -> list[FilingCandidate]:
+    """多年份检索年报全文候选（不下载）。1 年=单年，多年=拼接列表。"""
+    key = (payload.q or payload.code or "").strip()
+    if not key:
+        from fastapi import HTTPException
+
+        raise HTTPException(status_code=422, detail="请提供 q 或 code（代码/名称）")
+    try:
+        rows = fetch_service.search_cninfo_annual_years(key, list(payload.years))
+    except FetchError as exc:
+        raise _to_http(exc)
+    return [FilingCandidate.model_validate(r) for r in rows]
+
+
 @router.post(
     "/from-url",
     response_model=ImportJobRead,
@@ -106,3 +124,29 @@ def cninfo_download(
     except (FetchError, ImportError) as exc:
         raise _to_http(exc)
     return ImportJobRead.model_validate(import_service.job_to_dict(job))
+
+
+@router.post(
+    "/cninfo/batch",
+    response_model=CninfoBatchResponse,
+    status_code=status.HTTP_200_OK,
+)
+def cninfo_batch(
+    payload: CninfoBatchRequest, db: Session = Depends(get_session)
+) -> CninfoBatchResponse:
+    """多年份串行检索下载；单年失败不中断；不自动入库。"""
+    key = (payload.q or payload.code or "").strip()
+    if not key:
+        from fastapi import HTTPException
+
+        raise HTTPException(status_code=422, detail="请提供 q 或 code（代码/名称）")
+    try:
+        data = fetch_service.batch_cninfo_download(
+            db,
+            q=key,
+            years=list(payload.years),
+            company_id=payload.company_id,
+        )
+    except FetchError as exc:
+        raise _to_http(exc)
+    return CninfoBatchResponse.model_validate(data)
