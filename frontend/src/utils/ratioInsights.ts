@@ -201,9 +201,11 @@ export interface YoYInfo {
 
 export type PeriodRef = {
   year: number
-  period_type: string
+  period_type: 'annual' | 'quarterly' | string
   quarter?: number | null
 }
+
+type HistoryValuePoint = PeriodRef & { value: number }
 
 function emptyYoY(): YoYInfo {
   return {
@@ -225,13 +227,6 @@ function periodPointLabel(pt: PeriodRef): string {
     : `${pt.year} Q${pt.quarter}`
 }
 
-function periodMatches(a: PeriodRef, b: PeriodRef): boolean {
-  return (
-    a.year === b.year &&
-    a.period_type === b.period_type &&
-    (a.quarter ?? null) === (b.quarter ?? null)
-  )
-}
 
 /** 时间序：年 → 季；用于找「当前期之前」的一期 */
 function periodRank(p: PeriodRef): number {
@@ -246,11 +241,12 @@ function periodRank(p: PeriodRef): number {
 function findPreviousHistoryPoint(
   points: Array<PeriodRef & { value: number | null | undefined }>,
   currentPeriod: PeriodRef
-): (PeriodRef & { value: number }) | null {
-  const withVal = points.filter(
-    (p): p is PeriodRef & { value: number } =>
-      p.value !== null && p.value !== undefined && !Number.isNaN(Number(p.value))
-  )
+): HistoryValuePoint | null {
+  const withVal: HistoryValuePoint[] = []
+  for (const p of points) {
+    if (p.value === null || p.value === undefined || Number.isNaN(Number(p.value))) continue
+    withVal.push({ ...p, value: Number(p.value) })
+  }
   if (!withVal.length) return null
 
   const curRank = periodRank(currentPeriod)
@@ -306,18 +302,18 @@ export function computeYoY(
   if (current === null || current === undefined || !history?.series[key]) return empty
 
   const points = history.series[key].points || []
-  let prevPoint: (PeriodRef & { value: number }) | null = null
+  let prevPoint: HistoryValuePoint | null = null
 
   if (currentPeriod) {
     prevPoint = findPreviousHistoryPoint(points, currentPeriod)
   } else {
     // 无报告期时退化为：有值序列按时间升序的最后两期（避免误用「最新全局」）
-    const withVal = points
-      .filter(
-        (p): p is PeriodRef & { value: number } =>
-          p.value !== null && p.value !== undefined
-      )
-      .sort((a, b) => periodRank(a) - periodRank(b))
+    const withVal: HistoryValuePoint[] = []
+    for (const p of points) {
+      if (p.value === null || p.value === undefined || Number.isNaN(Number(p.value))) continue
+      withVal.push({ ...p, value: Number(p.value) })
+    }
+    withVal.sort((a, b) => periodRank(a) - periodRank(b))
     if (withVal.length < 2) return empty
     prevPoint = withVal[withVal.length - 2]
   }

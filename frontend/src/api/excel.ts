@@ -73,11 +73,13 @@ export async function downloadExcelTemplate(params?: {
   const name =
     filenameFromDisposition(res.headers['content-disposition'] as string | undefined) ||
     '财务三表模板.xlsx'
+  const contentType = res.headers['content-type']
   triggerBlobDownload(
     new Blob([res.data], {
       type:
-        res.headers['content-type'] ||
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        typeof contentType === 'string'
+          ? contentType
+          : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     }),
     name
   )

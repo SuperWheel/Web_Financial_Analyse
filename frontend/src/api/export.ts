@@ -34,10 +34,12 @@ export async function downloadCompanyExcel(
     parseFilename(disposition) ||
     `export_${params?.period_type || 'annual'}.xlsx`
 
+  const contentType = res.headers['content-type']
   const blob = new Blob([res.data], {
     type:
-      res.headers['content-type'] ||
-      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      typeof contentType === 'string'
+        ? contentType
+        : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
   })
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')

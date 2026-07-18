@@ -153,9 +153,6 @@ const prevLabel = computed(() =>
   hasMultiPeriod.value ? matrix.value?.periods[prevIdx.value]?.label || '上期' : '—'
 )
 
-const trendOptions = computed(() =>
-  flatFieldRows.value.map((r) => ({ key: r.key, label: r.label, group: r.groupLabel }))
-)
 
 /** 摘要 KPI：重点科目最新值 + 环比 */
 const summaryCards = computed(() => {
@@ -258,8 +255,8 @@ const moverBarOption = computed((): EChartsOption => {
         barMaxWidth: 16,
         label: {
           show: true,
-          position: 'right',
-          formatter: (p: { value?: number }) =>
+          position: 'right' as const,
+          formatter: (p: { value?: unknown }) =>
             typeof p.value === 'number' ? `${(p.value * 100).toFixed(1)}%` : '',
           fontSize: 11,
         },

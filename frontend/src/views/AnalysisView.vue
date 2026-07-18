@@ -749,9 +749,8 @@ const radarOption = computed(() => {
   return {
     tooltip: {
       trigger: 'item',
-      formatter: (p: { name?: string; value?: number[] }) => {
-        const idx = axes.findIndex((a) => a.name === p.name)
-        // radar tooltip varies; fallback list
+      formatter: () => {
+        // radar tooltip varies; list all axes
         return axes
           .map((a) => `${a.name}：${a.score === null ? '—' : a.score + ' 分'}<br/><span style="color:#909399;font-size:12px">${a.detail}</span>`)
           .join('<br/>')
@@ -928,6 +927,14 @@ function meaningClass(meaning: string): string {
 
 function focusMetric(key: string) {
   highlightedKey.value = highlightedKey.value === key ? null : key
+}
+
+function compareRowClassName({ row }: { row: PeriodCompareRow }): string {
+  return highlightedKey.value === row.key ? 'row-highlight' : ''
+}
+
+function onCompareRowClick(row: PeriodCompareRow) {
+  focusMetric(row.key)
 }
 
 function onDivergingClick(params: { name?: string }) {
@@ -1430,8 +1437,8 @@ onMounted(async () => {
             border
             stripe
             class="compare-table"
-            :row-class-name="({ row }) => (highlightedKey === row.key ? 'row-highlight' : '')"
-            @row-click="(row) => focusMetric(row.key)"
+            :row-class-name="compareRowClassName"
+            @row-click="onCompareRowClick"
           >
             <el-table-column prop="name" label="指标" min-width="110" />
             <el-table-column :label="periodCompare.previousLabel || '上期'" width="100">
