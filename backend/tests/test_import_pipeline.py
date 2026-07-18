@@ -46,6 +46,79 @@ def test_rollup_rule_exact_match():
     assert rule["mapped_to"] == "trading_financial_assets"
 
 
+
+def test_guess_company_name_prefers_cover_not_glossary():
+    """释义表关联方不得覆盖封面发行人名称。"""
+    from app.services.importing.text_utils import guess_company_name, guess_stock_code
+
+    text = """
+永辉超市股份有限公司2024年年度报告
+公司代码：601933 公司简称：永辉超市
+永辉超市股份有限公司
+年年度报告
+2024
+
+释义
+永辉、公司、本公司 指 永辉超市股份有限公司
+红旗连锁 指 成都红旗连锁股份有限公司
+中百集团 指 中百控股集团股份有限公司
+公司的中文名称 永辉超市股份有限公司
+"""
+    assert guess_company_name(text) == "永辉超市股份有限公司"
+    assert guess_stock_code(text) == "601933"
+
+
+def test_cninfo_pref_overrides_parser_company_hint(client, tmp_path):
+    """巨潮拉取预填名称应覆盖解析误伤（关联方公司名）。"""
+    from unittest.mock import patch
+    from types import SimpleNamespace
+
+    pdf = tmp_path / "601933_fake.pdf"
+    pdf.write_bytes(b"%PDF-1.4 fake")
+
+    fake_result = SimpleNamespace(
+        company_hint="成都红旗连锁股份有限公司",
+        company_code_hint=None,
+        report_year=2099,
+        period_type="annual",
+        quarter=None,
+        accounting_standard="CAS",
+        unit_scale=1.0,
+        scope="consolidated",
+        confidence=0.5,
+        fill_mode="REVIEW_REQUIRED",
+        raw_extract={},
+        coverage={},
+        issues=[],
+        unmapped=[],
+        status="ok",
+        error_message=None,
+        to_draft_dict=lambda: {"statements": {}},
+    )
+
+    with patch(
+        "app.services.fetching.service.download_pdf_bytes",
+        return_value=(pdf.read_bytes(), "x.pdf"),
+    ), patch(
+        "app.services.import_service.run_pipeline_on_path",
+        return_value=fake_result,
+    ):
+        r = client.post(
+            "/api/imports/fetch/cninfo/download",
+            json={
+                "pdf_url": "https://static.cninfo.com.cn/finalpage/x.PDF",
+                "code": "601933",
+                "title": "2024年年度报告",
+                "year": 2024,
+                "name": "永辉超市",
+            },
+        )
+    assert r.status_code == 201, r.text
+    body = r.json()
+    assert body["company_hint"] == "永辉超市"
+    assert body["company_code_hint"] == "601933"
+    assert body["report_year"] == 2024
+
 @pytest.mark.skipif(not YINGSHI_PDF.exists(), reason="缺少影石年报 PDF fixture")
 def test_pipeline_insta360_finds_statements():
     from app.services.importing.pipeline import run_pipeline_on_path

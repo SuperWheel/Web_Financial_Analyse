@@ -104,10 +104,17 @@ def create_job_from_upload(
 
     try:
         result = run_pipeline_on_path(dest)
-        # 解析结果优先；缺省时回退拉取预填
-        job.company_hint = result.company_hint or pref_name
-        job.company_code_hint = result.company_code_hint or pref_code
-        job.report_year = result.report_year or pref_year
+        # 元数据合并：
+        # - 巨潮/URL 拉取：证券身份以预填为准（解析易被释义表/关联方污染）
+        # - 本地上传：解析优先，缺省回退预填
+        if (source_type or "") in ("pdf_cninfo", "pdf_url"):
+            job.company_hint = pref_name or result.company_hint
+            job.company_code_hint = pref_code or result.company_code_hint
+            job.report_year = pref_year or result.report_year
+        else:
+            job.company_hint = result.company_hint or pref_name
+            job.company_code_hint = result.company_code_hint or pref_code
+            job.report_year = result.report_year or pref_year
         if pref_company_id is not None:
             job.company_id = pref_company_id
         job.period_type = result.period_type

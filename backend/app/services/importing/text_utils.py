@@ -122,26 +122,87 @@ _COMPANY_RE = re.compile(
     r"([\u4e00-\u9fffA-Za-z0-9（）()]{2,40}(?:股份有限公司|有限公司|集团|集團))"
 )
 _CODE_RE = re.compile(
-    r"(?:股票代码|证券代码|股份代号|股份代號|港交所代号|港交所代號|证券代号)[:：\s]*([0-9A-Za-z.]{3,10})",
+    r"(?:股票代码|证券代码|公司代码|股份代号|股份代號|港交所代号|港交所代號|证券代号)[:：\s]*([0-9A-Za-z.]{3,10})",
     re.I,
 )
 _YEAR_RE = re.compile(r"(20\d{2})\s*年")
+_GLOSSARY_LINE_RE = re.compile(r"^\s*\S.{0,20}\s+指\s+")
 
 
 def guess_company_name(text: str) -> str | None:
-    # 编制单位优先
-    m = re.search(r"编制单位[:：]\s*([^\n]{2,60})", text)
-    if m:
-        name = m.group(1).strip()
-        name = re.split(r"\s{2,}|单位", name)[0].strip()
-        if len(name) >= 4:
-            return to_simplified(name)
-    hits = _COMPANY_RE.findall(text[:3000])
-    if not hits:
+    """从年报文本推断发行人名称。
+
+    优先封面/法定名称字段；避免释义表（「红旗连锁 指 成都红旗…」）误伤。
+    """
+    if not text:
         return None
-    # 最长且含「股份」优先
-    hits = sorted(set(hits), key=lambda x: (0 if "股份" in x else 1, -len(x)))
-    return to_simplified(hits[0])
+    t = text
+
+    # 1) 法定中文名称（年报常见）
+    for pat in (
+        r"公司的中文名称\s*[:：]?\s*([^\n]{4,80})",
+        r"中文名称\s*[:：]\s*([^\n]{4,80})",
+        r"公司名称\s*[:：]\s*([^\n]{4,80})",
+    ):
+        m = re.search(pat, t)
+        if m:
+            name = _clean_company_candidate(m.group(1))
+            if name:
+                return to_simplified(name)
+
+    # 2) 编制单位
+    m = re.search(r"编制单位[:：]\s*([^\n]{2,60})", t)
+    if m:
+        name = _clean_company_candidate(m.group(1))
+        if name:
+            return to_simplified(name)
+
+    # 3) 封面优先：仅看前 800 字，取最早出现的「…股份有限公司」
+    head = t[:800]
+    head_hits = list(_COMPANY_RE.finditer(head))
+    if head_hits:
+        share = [h for h in head_hits if "股份有限公司" in h.group(1)]
+        pick = (share or head_hits)[0].group(1)
+        name = _clean_company_candidate(pick)
+        if name:
+            return to_simplified(name)
+
+    # 4) 全文兜底：跳过释义表行，优先含「股份」且更早出现
+    best: tuple[int, int, str] | None = None  # (is_share_penalty, index, name)
+    for line in t.splitlines()[:200]:
+        if _GLOSSARY_LINE_RE.search(line):
+            continue
+        if "指" in line and ("有限公司" in line or "股份" in line):
+            # 「简称 指 全称」释义，跳过
+            continue
+        for m in _COMPANY_RE.finditer(line):
+            cand = _clean_company_candidate(m.group(1))
+            if not cand or len(cand) < 4:
+                continue
+            idx = t.find(cand)
+            if idx < 0:
+                idx = 10_000
+            key = (0 if "股份" in cand else 1, idx, cand)
+            if best is None or key < best:
+                best = key
+    if best:
+        return to_simplified(best[2])
+    return None
+
+
+def _clean_company_candidate(raw: str) -> str | None:
+    name = (raw or "").strip()
+    name = re.split(r"\s{2,}|单位|股票|证券|代码|简称", name)[0].strip()
+    name = name.strip("：:·•-—|｜/\\")
+    # 去掉常见前缀噪声
+    name = re.sub(r"^(公司的|本公司|本集团)+", "", name)
+    if len(name) < 4:
+        return None
+    if not re.search(r"(公司|集团|集團)$", name):
+        # 允许「…股份有限公司」中间截断已由正则保证后缀
+        if "公司" not in name and "集团" not in name and "集團" not in name:
+            return None
+    return name
 
 
 def guess_stock_code(text: str) -> str | None:

@@ -81,6 +81,17 @@ def build_profile(pdf_path: Path, sample_pages: int = 25) -> DocumentProfile:
         extractability = 0.35
         diagnostics.append("可抽取性一般")
 
+    # 元数据（公司/代码/年份）优先封面与前几页，避免释义表/关联方名称污染
+    cover_blob = to_simplified(
+        "\n".join(
+            [
+                head,
+                texts[1] if len(texts) > 1 else "",
+                texts[2] if len(texts) > 2 else "",
+                texts[3] if len(texts) > 3 else "",
+            ]
+        )
+    )
     simplified = to_simplified(blob_for_meta)
     standard = "unknown"
     if any(k in simplified for k in ("合并资产负债表", "币种：人民币", "√适用", "不适用")):
@@ -103,9 +114,10 @@ def build_profile(pdf_path: Path, sample_pages: int = 25) -> DocumentProfile:
         unit_scale = 1.0
         unit_confidence = 0.9
 
-    company = guess_company_name(simplified)
-    code = guess_stock_code(simplified)
-    years = guess_years(simplified)
+    company = guess_company_name(cover_blob) or guess_company_name(simplified)
+    code = guess_stock_code(cover_blob) or guess_stock_code(simplified)
+    # 年份：封面标题优先，再回退抽样全文
+    years = guess_years(cover_blob) or guess_years(simplified)
 
     return DocumentProfile(
         path=str(path),
