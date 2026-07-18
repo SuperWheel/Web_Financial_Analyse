@@ -1,5 +1,21 @@
 import http from './http'
 
+export interface CoverageStats {
+  core_total?: number
+  core_hit?: number
+  mapped_fields?: number
+  /** 0–1 core-field hit rate */
+  coverage?: number
+}
+
+export interface UnmappedRow {
+  statement?: string
+  label?: string
+  amount?: number | null
+  page?: number | null
+  reason?: string
+}
+
 export interface ImportJob {
   id: number
   source_type: string
@@ -17,9 +33,9 @@ export interface ImportJob {
   confidence: number | null
   fill_mode: string | null
   error_message: string | null
-  coverage: Record<string, unknown>
+  coverage: Record<string, CoverageStats>
   issues: string[]
-  unmapped: Array<Record<string, unknown>>
+  unmapped: UnmappedRow[]
   draft: {
     statements?: Record<string, Record<string, number>>
     [key: string]: unknown
