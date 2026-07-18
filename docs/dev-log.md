@@ -4,6 +4,19 @@
 
 ---
 
+## [2026-07-18] Docs —— 规范文档吸收 post-1.0 踩坑经验
+
+**产物**：根目录《AI Coding 开发规范参考文档.md》
+
+**写入位置**：
+- 五、反模式表：门禁假绿 / 巨页堆功能 / lint 过严 / 巨型未切片提交
+- 六、测试：机械门禁、纯函数优先可测
+- 七、目录：plans/archive/check.sh/ci
+- 八、快速卡：恢复交付、build 校验
+- **九、工程实践备忘（新增）**：Vue 模板禁 TS、type-check≠build、Node 工具链、Ruff/ESLint 渐进、巨页拆分纪律、gh workflow scope、解析/人审约束、可复制总约束
+
+---
+
 ## [2026-07-18] Phase B3/B5 + C2/C3 —— 门禁收尾与视图拆分完成
 
 **B3 ESLint**：`eslint.config.js` flat 最小规则；`npm run lint` 0 errors；CI/check 接入。  
